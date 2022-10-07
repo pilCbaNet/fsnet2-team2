@@ -1,0 +1,11 @@
+.login{
+    height: 90vh;
+}
+
+.imgLogo{
+    width: 140px;
+}
+
+.alerta{
+    text-shadow: 2px 2px 5px red, -2px -2px 5px red;
+}

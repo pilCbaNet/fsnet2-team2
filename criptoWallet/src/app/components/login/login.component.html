@@ -1,0 +1,26 @@
+<div class="login container d-flex flex-column justify-content-start align-items-center">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <img src="../../../assets/verify-identity.png" class="imgLogo" alt="Login page logo">
+      <h2 class="p-4">Welcome to Cripto-Wallet</h2>
+    </div>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="login()" class="col-7 d-flex flex-column gap-5">
+          <div class="col-md-12">
+            <label for="email" class="form-label" >Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+            <p class="alerta" *ngIf="loginForm.touched && loginForm.get('email')?.errors?.['email']" >You must enter a correct email</p>
+          </div>
+          <div class="col-md-12">
+            <label for="password" class="form-label"  >Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+            <p class="alerta" *ngIf="loginForm.touched && loginForm.get('password')?.errors?.['required']" >You must enter a password</p>
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="loginForm.invalid"><a class="text-white" routerLink="/home">Login</a></button>
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+              <p>Aren't you register? <a routerLink="/registration">click here</a> </p>
+          </div>
+             
+      </form>
+  </div>
