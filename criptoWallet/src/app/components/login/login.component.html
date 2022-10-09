@@ -16,7 +16,7 @@
             <p class="alerta" *ngIf="loginForm.touched && loginForm.get('password')?.errors?.['required']" >You must enter a password</p>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="loginForm.invalid"><a class="text-white" routerLink="/home">Login</a></button>
+            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="loginForm.invalid"><a class="text-white">Login</a></button>
           </div>
           <div class="col-12 d-flex justify-content-center">
               <p>Aren't you register? <a routerLink="/registration">click here</a> </p>
