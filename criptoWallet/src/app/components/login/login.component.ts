@@ -26,8 +26,7 @@ export class LoginComponent implements OnInit {
   // "password": "cityslicka"
 
   
-  login()
-  {
+  login():void{
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data)=>{
       this.token=data;
       sessionStorage.setItem('token', JSON.stringify(this.token));
