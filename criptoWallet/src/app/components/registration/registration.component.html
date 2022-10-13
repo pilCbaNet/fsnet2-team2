@@ -4,37 +4,71 @@
       <h2 class="p-3">Registration Form</h2>
     </div>
     
-    <form class="row g-3">
+    <form class="row g-3" [formGroup]="regForm">
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="enter your email" required>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="enter your email" formControlName="email">
+          <div *ngIf="regForm.get('email')?.invalid && (regForm.get('email')?.dirty || regForm.get('email')?.touched)" class="alerta">
+            <div *ngIf="regForm.get('email')?.errors?.['required']">
+              Email is required.
+            </div>
+            <div *ngIf="regForm.get('email')?.errors?.['email']">
+              You must enter a valid email format.
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">Password: </label>
-          <input type="password" class="form-control" id="inputPassword4" placeholder="enter a password" required>
+          <input type="password" class="form-control" id="inputPassword4" placeholder="enter a password" formControlName="password">
+          <div *ngIf="regForm.get('password')?.invalid && (regForm.get('password')?.dirty || regForm.get('password')?.touched)" class="alerta">
+            <div *ngIf="regForm.get('password')?.errors?.['required']">
+              This field is required.
+            </div>
+            <div *ngIf="regForm.get('password')?.errors?.['minlength']">
+              Password must be at least 6 characters long.
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">Repeat password:</label>
-          <input type="password" class="form-control" id="inputPassword4" placeholder="repeat your password" required>
+          <input type="password" class="form-control" id="inputPassword4" placeholder="repeat your password" formControlName="password2">
+          <div *ngIf="regForm.get('password2')?.invalid && (regForm.get('password2')?.dirty || regForm.get('password2')?.touched)" class="alerta">
+            <div *ngIf="regForm.get('password2')?.errors?.['required']">
+              This field is required.
+            </div>
+            <div *ngIf="regForm.get('password2')?.errors?.['minlength']">
+              Password must be at least 6 characters long.
+            </div>
+          </div>
         </div>
         <div class="col-6">
           <label for="inputAddress" class="form-label">Address</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St example" required>
+          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St example" formControlName="address">
+          <div *ngIf="regForm.get('address')?.invalid && (regForm.get('address')?.dirty || regForm.get('address')?.touched)" class="alerta">
+            <div *ngIf="regForm.get('address')?.errors?.['required']">
+              This field is required.
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputCity" class="form-label">City</label>
-          <input type="text" class="form-control" id="inputCity" placeholder="enter your city" required>
+          <input type="text" class="form-control" id="inputCity" placeholder="enter your city" formControlName="city">
+          <div *ngIf="regForm.get('city')?.invalid && (regForm.get('city')?.dirty || regForm.get('city')?.touched)" class="alerta">
+            <div *ngIf="regForm.get('city')?.errors?.['required']">
+              This field is required.
+            </div>
+          </div>
         </div>
         <div class="col-12">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+            <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="terms">
             <label class="form-check-label" for="gridCheck">
               Accept all terms and conditions
             </label>
           </div>
         </div>
         <div class="col-12 d-flex gap-4 justify-content-center">
-          <button type="submit" class="btn btn-primary">Register me</button>
+          <button type="submit" class="btn btn-primary" [disabled]="regForm.invalid">Register me</button>
           <a routerLink="/login" class="btn btn-outline-danger text-white">Go Back</a>
         </div>
       </form>
