@@ -13,7 +13,7 @@
                 Email is required.
               </div>
               <div *ngIf="loginForm.get('email')?.errors?.['email']">
-                Name must be an email.
+                You must enter a valid email format.
               </div>
             </div>
           </div>
@@ -23,9 +23,6 @@
             <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="alerta">
               <div *ngIf="loginForm.get('password')?.errors?.['required']">
                 Password is required.
-              </div>
-              <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
-                Name must be at least 5 characters long.
               </div>
             </div>
           </div>
