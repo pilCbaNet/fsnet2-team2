@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/Models/IUsuario.model';
 
 @Component({
@@ -11,10 +12,21 @@ export class HomeComponent implements OnInit {
   //TODO TRAER ESTOS DATOS DEL BACKEND
   usuario!: Usuario; 
   saldo!: number;
+  depositForm!:FormGroup;
 
-  constructor() { }
+  constructor(private fb:FormBuilder) {
+    this.depositForm = this.fb.group({
+      monto:['',[Validators.required, Validators.min(1)]],
+      cuenta:['',[Validators.required, Validators.minLength(12)]]
+    })
+   }
 
   ngOnInit(): void {
+  }
+
+  depositar():void{
+    //todo generar el deposito
+    console.log(this.depositForm.value);
   }
 
 }

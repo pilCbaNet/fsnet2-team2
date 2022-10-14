@@ -31,8 +31,33 @@
         <h1 class="modal-title fs-5 " id="exampleModalLabel">Make a deposit</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
+        <form [formGroup]="depositForm" (ngSubmit)="depositar()" class="col-7 d-flex flex-column gap-5">
+          <div class="col-md-12">
+            <label for="monto" class="form-label" >How much?</label>
+            <input type="number" class="form-control" id="monto" formControlName="monto">
+            <div *ngIf="depositForm.get('monto')?.invalid && (depositForm.get('monto')?.dirty || depositForm.get('monto')?.touched)" class="alerta">
+              <div *ngIf="depositForm.get('monto')?.errors?.['required']">
+                Amout is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <label for="cuenta" class="form-label"  >Count number:</label>
+            <input type="text" class="form-control" id="cuenta" formControlName="cuenta">
+            <div *ngIf="depositForm.get('cuenta')?.invalid && (depositForm.get('cuenta')?.dirty || depositForm.get('cuenta')?.touched)" class="alerta">
+              <div *ngIf="depositForm.get('cuenta')?.errors?.['required']">
+                Count is required.
+              </div>
+              <div *ngIf="depositForm.get('cuenta')?.errors?.['minlength']">
+                Count must have at least 12 characters.
+              </div>
+            </div>
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="depositForm.invalid"><a class="text-white">Deposit</a></button>
+          </div>
+      </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -50,8 +75,8 @@
         <h1 class="modal-title fs-5 " id="exampleModalLabel">Send Money</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
+        IN CONTRUCTION
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -70,8 +95,8 @@
         <h1 class="modal-title fs-5 " id="exampleModalLabel">Buy or Sell</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
+        IN CONTRUCTION
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -90,8 +115,8 @@
         <h1 class="modal-title fs-5 " id="exampleModalLabel">Change</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
+        IN CONTRUCTION
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

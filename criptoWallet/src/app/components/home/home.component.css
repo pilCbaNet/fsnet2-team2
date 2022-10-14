@@ -5,3 +5,8 @@
 .imgLogo{
     width: 120px;
 }
+
+.alerta{
+    text-shadow: 2px 2px 5px red, -2px -2px 5px red;
+    opacity: 0.8;
+}
