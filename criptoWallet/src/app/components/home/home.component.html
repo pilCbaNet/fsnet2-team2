@@ -43,14 +43,14 @@
             </div>
           </div>
           <div class="col-md-12">
-            <label for="cuenta" class="form-label"  >Count number:</label>
+            <label for="cuenta" class="form-label"  >Account number:</label>
             <input type="text" class="form-control" id="cuenta" formControlName="cuenta">
             <div *ngIf="depositForm.get('cuenta')?.invalid && (depositForm.get('cuenta')?.dirty || depositForm.get('cuenta')?.touched)" class="alerta">
               <div *ngIf="depositForm.get('cuenta')?.errors?.['required']">
-                Count is required.
+                Account is required.
               </div>
               <div *ngIf="depositForm.get('cuenta')?.errors?.['minlength']">
-                Count must have at least 12 characters.
+                Account must have at least 12 characters.
               </div>
             </div>
           </div>
