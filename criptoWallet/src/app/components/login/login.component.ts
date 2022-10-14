@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Auth/auth.service';
+import usuarioMock from 'src/app/Mocks/usuario.mock';
+import { Usuario } from 'src/app/Models/IUsuario.model';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
   token!:any;
 
+  usuarioPrueba!:Usuario
+
   constructor(private fb:FormBuilder, private authService:AuthService, private route:Router ) {
     this.loginForm = this.fb.group({
       email:['',[Validators.required, Validators.email]],
@@ -20,6 +24,8 @@ export class LoginComponent implements OnInit {
     
    }
   ngOnInit(): void {
+    this.usuarioPrueba = usuarioMock;
+    console.log(this.usuarioPrueba);
   }
 
   // "email": "eve.holt@reqres.in",
