@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Usuario } from 'src/app/Models/IUsuario.model';
 
 @Component({
   selector: 'app-registration',
@@ -8,20 +9,45 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistrationComponent implements OnInit {
 
+  //TODO: ESTA LISTA DEBERIA ESTAR EN EL BACKEND
+  listaUsuarios: Usuario[] = [];
+
   regForm:FormGroup;
 
   constructor(private fb:FormBuilder) {
     this.regForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
       email:['',[Validators.required, Validators.email]],
       password:['',[Validators.required, Validators.minLength(6)]],
       password2:['',[Validators.required, Validators.minLength(6)]],
       address:['',[Validators.required]],
       city:['',[Validators.required]],
-      terms:['',[Validators.requiredTrue]]
+      terms:['',[Validators.required]]
     })
    }
 
   ngOnInit(): void {
   }
 
+  registrarUsuario(){
+
+    if(this.regForm.valid && this.regForm.value.password == this.regForm.value.password2){
+      let usuario:Usuario = {
+        nombre: this.regForm.get('name')?.value,
+        apellido: this.regForm.get('lastName')?.value,
+        email: this.regForm.get('email')?.value,
+        password: this.regForm.get('password')?.value,
+        address: this.regForm.get('address')?.value,
+        city: this.regForm.get('city')?.value,
+        terms: this.regForm.get('terms')?.value,
+        usuarioRegistrado:{
+          email: this.regForm.get('email')?.value,
+          password: this.regForm.get('password')?.value
+        }
+      }
+      this.listaUsuarios.push(usuario);
+      console.log(this.listaUsuarios);
+    } 
+  }
 }

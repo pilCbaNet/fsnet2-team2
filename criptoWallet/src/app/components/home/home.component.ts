@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/Models/IUsuario.model';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  //TODO TRAER ESTOS DATOS DEL BACKEND
+  usuario!: Usuario; 
+  saldo!: number;
 
   constructor() { }
 
