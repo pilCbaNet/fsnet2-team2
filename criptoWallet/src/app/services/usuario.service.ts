@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Usuario } from '../Models/IUsuario.model';
 
 @Injectable({
@@ -6,17 +8,28 @@ import { Usuario } from '../Models/IUsuario.model';
 })
 export class UsuarioService {
 
-  usuario!:Usuario
+  url:string = 'http://localhost:3000/posts/';
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  setUsuario(usuario:Usuario){
-    this.usuario = usuario;
+  crearUsuario(usuario:Usuario):Observable<any>{
+    return this.http.post(this.url, usuario);
   }
 
-  getUsuario(){
-    return this.usuario;
+  getUsuarios():Observable<any>{
+    return this.http.get(this.url);
   }
 
+  getUsuariobyId(id:number):Observable<any>{
+    return this.http.get(this.url+id);
+  }
+
+  updateUsuario(id:number, usuario:Usuario):Observable<any>{
+    return this.http.put(this.url+id, usuario);
+  }
+
+  deleteUsuario(id:number):Observable<any>{
+    return this.http.delete(this.url+id);
+  }
 
 }

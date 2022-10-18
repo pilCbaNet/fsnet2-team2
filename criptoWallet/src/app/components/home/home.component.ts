@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Cuenta } from 'src/app/Models/ICuenta.mode.';
 import { Usuario } from 'src/app/Models/IUsuario.model';
+import { CuentaService } from 'src/app/services/cuenta.service';
 
 @Component({
   selector: 'app-home',
@@ -11,27 +13,43 @@ export class HomeComponent implements OnInit {
 
   //TODO TRAER ESTOS DATOS DEL BACKEND
   usuario!: Usuario; 
-  saldo!: number;
   depositForm!:FormGroup;
   sendForm!:FormGroup;
+  cuenta!:Cuenta;
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder, private cuentaService:CuentaService) {
     this.depositForm = this.fb.group({
       monto:['',[Validators.required, Validators.min(1)]],
-      cuenta:['',[Validators.required, Validators.minLength(12)]]
+      cuenta:['',[Validators.required, Validators.minLength(9)]]
     })
     this.sendForm = this.fb.group({
       monto:['',[Validators.required, Validators.min(1)]],
-      cuenta:['',[Validators.required, Validators.minLength(12)]]
+      cuenta:['',[Validators.required, Validators.minLength(9)]]
     })
    }
 
   ngOnInit(): void {
+    this.cuentaService.getUCuenta(1).subscribe({
+      next:(data)=>{
+        this.cuenta=data;
+      },
+      error:(error)=>console.log(error)
+      
+    })
+
+    
   }
 
   depositar():void{
-    //todo generar el deposito
-    console.log(this.depositForm.value);
+    if (this.cuenta.numeroDeCuenta === this.depositForm.get('cuenta')?.value){
+       this.cuenta.saldo+=this.depositForm.get('monto')?.value
+    document.getElementById('depositClose')?.click();
+    this.cuentaService.updateCuenta(this.cuenta.id, this.cuenta).subscribe()
+    }
+    else {
+      alert("La cuenta ingresada es incorrecta!")
+    }
+   
   }
 
   enviarDinero():void{

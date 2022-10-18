@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/Models/IUsuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-registration',
@@ -14,7 +16,7 @@ export class RegistrationComponent implements OnInit {
 
   regForm:FormGroup;
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder, private usuarioService:UsuarioService) {
     this.regForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
@@ -46,8 +48,8 @@ export class RegistrationComponent implements OnInit {
           password: this.regForm.get('password')?.value
         }
       }
-      this.listaUsuarios.push(usuario);
-      console.log(this.listaUsuarios);
+      this.usuarioService.crearUsuario(usuario).subscribe();
+      console.log(usuario);
     } 
   }
 }

@@ -7,7 +7,7 @@
   <div class="card text-white bg-dark mb-4" style="max-width: 30rem;">
     <div style="text-align:center;" class="card-header">Balance Total {{usuario}}</div>
     <div class="card-body">
-      <h2 style="text-align:center;" class="card-title">${{saldo}}</h2>
+      <h2 style="text-align:center;" class="card-title">${{cuenta.saldo}}</h2>
       <p style="text-align:center;" class="card-text">ARS</p>
 
     </div>
@@ -50,7 +50,7 @@
                 Account is required.
               </div>
               <div *ngIf="depositForm.get('cuenta')?.errors?.['minlength']">
-                Account must have at least 12 characters.
+                Account must have at least 9 characters.
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@
       </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" id="depositClose" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -94,7 +94,7 @@
                 Account is required.
               </div>
               <div *ngIf="depositForm.get('cuenta')?.errors?.['minlength']">
-                Account must have at least 12 characters.
+                Account must have at least 9 characters.
               </div>
             </div>
           </div>

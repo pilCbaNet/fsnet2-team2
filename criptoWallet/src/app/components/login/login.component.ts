@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Auth/auth.service';
 import usuarioMock from 'src/app/Mocks/usuario.mock';
 import { Usuario } from 'src/app/Models/IUsuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -16,22 +17,19 @@ export class LoginComponent implements OnInit {
 
   usuarioPrueba!:Usuario
 
-  constructor(private fb:FormBuilder, private authService:AuthService, private route:Router ) {
+  constructor(private fb:FormBuilder, private authService:AuthService, private route:Router, private usuarioService:UsuarioService ) {
     this.loginForm = this.fb.group({
       email:['',[Validators.required, Validators.email]],
       password:['',[Validators.required]]
-    })
-    
+    }) 
    }
+
   ngOnInit(): void {
-    this.usuarioPrueba = usuarioMock;
-    console.log(this.usuarioPrueba);
   }
 
   // "email": "eve.holt@reqres.in",
   // "password": "cityslicka"
 
-  
   login():void{
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data)=>{
       this.token=data;

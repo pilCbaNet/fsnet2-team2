@@ -1,5 +1,5 @@
 export interface Cuenta{
-    //id: number;
+    id: number;
     numeroDeCuenta: string;
     saldo: number;
 }

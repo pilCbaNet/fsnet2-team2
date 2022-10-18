@@ -1,22 +1,33 @@
-{"UsuarioActivo":[{
-    "usuario":{
-    "nombre": "Juan",
-    "apellido": "Perez",
-    "email": "jPerez@hotmail.com",
-    "password": "123456",
-    "address": "Calle falsa 123",
-    "city": "Buenos Aires",
-    "terms": true,
-    "usuarioRegistrado":{
-        "email": "jPerez@hotmail.com",
-        "password": "123456"
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
     },
-    "cuenta":{
-        "numeroDeCuenta": "123456789012",
-        "saldo": 6000
+    {
+      "nombre": "Marco",
+      "apellido": "Iannuzzi",
+      "email": "MARCOIANNUZZI@LIVE.COM.AR",
+      "password": "123456",
+      "address": "Fuensalida 593",
+      "city": "Villa Dolores",
+      "terms": true,
+      "usuarioRegistrado": {
+        "email": "MARCOIANNUZZI@LIVE.COM.AR",
+        "password": "123456"
+      },
+      "id": 2
     }
+  ],
+  "cuenta": [
+    {
+      "id": 1,
+      "numeroDeCuenta": "123456789",
+      "saldo": 221550
+    }
+  ],
+  "profile": {
+    "name": "typicode"
   }
 }
-]}
-
-
