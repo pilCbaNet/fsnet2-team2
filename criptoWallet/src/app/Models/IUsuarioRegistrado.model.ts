@@ -1,5 +1,5 @@
 export interface UsuarioRegistrado{
-    //id: number; 
+    id: number; 
     email: string;
     password: string;
 }
