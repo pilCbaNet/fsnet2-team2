@@ -10,7 +10,7 @@
       "city": "Villa Dolores",
       "terms": true,
       "usuarioRegistrado": {
-        "id":1,
+        "id": 1,
         "email": "MARCOIANNUZZI@LIVE.COM.AR",
         "password": "123456"
       }
@@ -33,5 +33,47 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "team": [
+    {
+      "id": 1,
+      "name": "Nicolas Macias",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Nicolas",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Macias",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Lionel Messi",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Nicolas Macias",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Nicolas",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Macias",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Lionel Messi",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    }
+  ]
 }
