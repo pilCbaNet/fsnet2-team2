@@ -19,7 +19,7 @@
   "cuenta": [
     {
       "id": 1,
-      "numeroDeCuenta": "123456789",
+      "numeroDeCuenta": 123456789,
       "saldo": 150000
     }
   ],
