@@ -15,7 +15,11 @@ export class HomeComponent implements OnInit {
   usuario!: Usuario; 
   depositForm!:FormGroup;
   sendForm!:FormGroup;
-  cuenta!:Cuenta;
+  cuenta:Cuenta={
+    saldo: 0,
+    numeroDeCuenta: "",
+    id: 0
+  }
 
   constructor(private fb:FormBuilder, private cuentaService:CuentaService) {
     this.depositForm = this.fb.group({

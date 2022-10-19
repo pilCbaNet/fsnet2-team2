@@ -1,7 +1,6 @@
 import { UsuarioRegistrado } from "./IUsuarioRegistrado.model";
 
 export interface Usuario{
-    id: number;
     nombre: string;
     apellido: string;
     email: string;
