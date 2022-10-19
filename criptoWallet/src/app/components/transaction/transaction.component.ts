@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Movimientos } from 'src/app/Models/IMovimientos';
+import { TransactionsService } from 'src/app/services/transactions.service';
 
 @Component({
   selector: 'app-transaction',
@@ -7,11 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionComponent implements OnInit {
 
-  
+  movimientos:Movimientos[]=[]
 
-  constructor() { }
+  constructor(private transactionService:TransactionsService) { }
 
   ngOnInit(): void {
+    this.transactionService.getTrasactions().subscribe({
+      next:(data)=>{this.movimientos=data
+      console.log(this.movimientos)}
+    })
+    
   }
 
 }

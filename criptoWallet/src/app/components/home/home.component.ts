@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
   }
 
   depositar():void{
-    if (this.cuenta.numeroDeCuenta === this.depositForm.get('cuenta')?.value){
+    if (this.cuenta.numeroDeCuenta == this.depositForm.get('cuenta')?.value){
        this.cuenta.saldo+=this.depositForm.get('monto')?.value
     document.getElementById('depositClose')?.click();
     this.cuentaService.updateCuenta(this.cuenta.id, this.cuenta).subscribe()

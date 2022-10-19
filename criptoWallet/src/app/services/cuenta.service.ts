@@ -23,5 +23,4 @@ export class CuentaService {
   updateCuenta(id:number, cuenta:Cuenta):Observable<any>{
     return this.http.put(this.url+id, cuenta)
   }
-
 }
