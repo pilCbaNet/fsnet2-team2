@@ -1,0 +1,37 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "nombre": "Marco",
+      "apellido": "Iannuzzi",
+      "email": "MARCOIANNUZZI@LIVE.COM.AR",
+      "password": "123456",
+      "address": "Fuensalida 593",
+      "city": "Villa Dolores",
+      "terms": true,
+      "usuarioRegistrado": {
+        "id": 1,
+        "email": "MARCOIANNUZZI@LIVE.COM.AR",
+        "password": "123456"
+      }
+    }
+  ],
+  "cuenta": [
+    {
+      "id": 1,
+      "numeroDeCuenta": "123456789",
+      "saldo": 162500
+    }
+  ],
+  "movimientos": [
+    {
+      "id": 1,
+      "numeroDeCuenta": "123456789",
+      "monto": 150000,
+      "fecha": ""
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
