@@ -60,8 +60,8 @@
       </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" id="depositClose" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" id="depositClose" data-bs-dismiss="modal" (click)="depositForm.reset()">Close</button>
+
       </div>
     </div>
   </div>
@@ -80,8 +80,8 @@
           <div class="col-md-12">
             <label for="monto" class="form-label" >How much?</label>
             <input type="number" class="form-control" id="monto" formControlName="monto">
-            <div *ngIf="depositForm.get('monto')?.invalid && (depositForm.get('monto')?.dirty || depositForm.get('monto')?.touched)" class="alerta">
-              <div *ngIf="depositForm.get('monto')?.errors?.['required']">
+            <div *ngIf="sendForm.get('monto')?.invalid && (sendForm.get('monto')?.dirty || sendForm.get('monto')?.touched)" class="alerta">
+              <div *ngIf="sendForm.get('monto')?.errors?.['required']">
                 Amout is required.
               </div>
             </div>
@@ -89,23 +89,22 @@
           <div class="col-md-12">
             <label for="cuenta" class="form-label"  >Account number:</label>
             <input type="text" class="form-control" id="cuenta" formControlName="cuenta">
-            <div *ngIf="depositForm.get('cuenta')?.invalid && (depositForm.get('cuenta')?.dirty || depositForm.get('cuenta')?.touched)" class="alerta">
-              <div *ngIf="depositForm.get('cuenta')?.errors?.['required']">
+            <div *ngIf="sendForm.get('cuenta')?.invalid && (sendForm.get('cuenta')?.dirty || sendForm.get('cuenta')?.touched)" class="alerta">
+              <div *ngIf="sendForm.get('cuenta')?.errors?.['required']">
                 Account is required.
               </div>
-              <div *ngIf="depositForm.get('cuenta')?.errors?.['minlength']">
+              <div *ngIf="sendForm.get('cuenta')?.errors?.['minlength']">
                 Account must have at least 9 characters.
               </div>
             </div>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="depositForm.invalid"><a class="text-white">Send Money</a></button>
+            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="sendForm.invalid"><a class="text-white">Send Money</a></button>
           </div>
       </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="sendForm.reset()">Close</button>
       </div>
     </div>
   </div>
