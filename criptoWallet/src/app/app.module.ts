@@ -10,7 +10,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { HomeComponent } from './components/home/home.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { HttpClientModule} from '@angular/common/http';
-import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component'
+import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
+import { FooterComponent } from './components/footer/footer.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.
     RegistrationComponent,
     HomeComponent,
     TransactionComponent,
-    QuienesSomosComponent
+    QuienesSomosComponent,
+    FooterComponent
     
   ],
   imports: [
