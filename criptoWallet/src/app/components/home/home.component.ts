@@ -57,8 +57,14 @@ export class HomeComponent implements OnInit {
   }
 
   enviarDinero():void{
-    //todo generar el envio
-    console.log(this.sendForm.value);
+    if (this.cuenta.numeroDeCuenta == this.sendForm.get('cuenta')?.value){
+      this.cuenta.saldo-=this.sendForm.get('monto')?.value
+   document.getElementById('sendClose')?.click();
+   this.cuentaService.updateCuenta(this.cuenta.id, this.cuenta).subscribe()
+   }
+   else {
+     alert("La cuenta ingresada es incorrecta!")
+   }
   }
 
 }

@@ -14,20 +14,37 @@
         "email": "MARCOIANNUZZI@LIVE.COM.AR",
         "password": "123456"
       }
+    },
+    {
+      "nombre": "test",
+      "apellido": "test",
+      "email": "test@test.com",
+      "password": "test123",
+      "address": "test",
+      "city": "test",
+      "terms": true,
+      "usuarioRegistrado": {
+        "email": "test@test.com",
+        "password": "test123"
+      },
+      "id": 2
     }
   ],
   "cuenta": [
     {
       "id": 1,
       "numeroDeCuenta": "123456789",
-      "saldo": 162500
+      "saldo": 500
     }
   ],
   "movimientos": [
     {
       "id": 1,
+      "tipoDeTransaccion": "Deposito",
       "numeroDeCuenta": "123456789",
       "monto": 150000,
+      "cuentaReceptor": "987654321",
+      "receptorNombre": "Gaston",
       "fecha": ""
     }
   ],
