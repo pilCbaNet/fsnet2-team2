@@ -50,5 +50,47 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "team": [
+    {
+      "id": 1,
+      "name": "Nicolas Macias",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Nicolas",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Macias",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Lionel Messi",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Nicolas Macias",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Nicolas",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Macias",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Lionel Messi",
+      "imagen": "../../../assets/imagenes/team/messirve.jpg"
+    }
+  ]
 }
