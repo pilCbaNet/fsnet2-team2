@@ -1,1 +1,17 @@
-<p>quienes-somos works!</p>
+<section class="p-5 page-section" id="team">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">The Team</h2>
+    </div>
+    <div class="row">
+      <div *ngFor="let item of team" class="col-md-3 text-center">
+        <div>
+          <img class="rounded-circle img-fluid" [src]="item.imagen" alt="..." />
+          <h4>{{ item.name }}</h4>
+          <a class="btn mx-3" href="#!"><i class="fab fa-linkedin-in"></i></a>
+          <a class="btn" routerLink="/quienes-somos/3">Ver Perfil</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
