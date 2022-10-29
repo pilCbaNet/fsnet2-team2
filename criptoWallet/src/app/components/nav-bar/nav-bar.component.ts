@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  token:string | null = null;
+  token:any;
 
   constructor() { }
 
@@ -18,7 +18,6 @@ export class NavBarComponent implements OnInit {
 
   logout(){
     sessionStorage.removeItem('token')
-    
   }
 
 }

@@ -15,7 +15,7 @@
       </thead>
       <tbody >
         <tr *ngFor="let movimiento of movimientos">
-          <th scope="row">1</th>
+          <th scope="row">{{movimiento.id}}</th>
           <td>{{movimiento.tipoDeTransaccion}}</td>
           <td>{{movimiento.receptorNombre}}</td>
           <td>{{movimiento.cuentaReceptor}}</td>

@@ -17,6 +17,7 @@ export class GuardGuard implements CanActivate {
       if (token){
         return true
       } else{
+        alert("Must be a registered user to enter!")
         this.router.navigate(['login'])
         return false;
       }
