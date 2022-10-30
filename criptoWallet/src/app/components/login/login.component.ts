@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Auth/auth.service';
+import usuarioMock from 'src/app/Mocks/usuario.mock';
+import { Usuario } from 'src/app/Models/IUsuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -8,22 +13,30 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
+  token!:any;
 
-  constructor(private fb:FormBuilder ) {
+  usuarioPrueba!:Usuario
+
+  constructor(private fb:FormBuilder, private authService:AuthService, private route:Router, ) {
     this.loginForm = this.fb.group({
-      email:new FormControl('',[Validators.required, Validators.email]),
-      password: new FormControl('',[Validators.required])
-    })
-    
+      email:['',[Validators.required, Validators.email]],
+      password:['',[Validators.required]]
+    }) 
    }
+
   ngOnInit(): void {
   }
 
-  
-  login()
-  {
-    return console.log(this.loginForm.value);
-    //todo navegar al inicio si la clave es correcta
+  // "email": "eve.holt@reqres.in",
+  // "password": "cityslicka"
+
+  login():void{
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data)=>{
+      this.token=data;
+      sessionStorage.setItem('token', JSON.stringify(this.token));
+      this.route.navigate(['/home']);       
+      this.loginForm.reset()
+    })
   }
 
 }

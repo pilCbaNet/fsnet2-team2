@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
+  token:any;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.token = sessionStorage.getItem('token')
+    console.log(this.token);
+  }
+
+  logout(){
+    sessionStorage.removeItem('token')
   }
 
 }

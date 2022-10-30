@@ -9,6 +9,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HomeComponent } from './components/home/home.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
+import { HttpClientModule} from '@angular/common/http';
+import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
+import { FooterComponent } from './components/footer/footer.component'
 
 @NgModule({
   declarations: [
@@ -17,12 +20,16 @@ import { TransactionComponent } from './components/transaction/transaction.compo
     LoginComponent,
     RegistrationComponent,
     HomeComponent,
-    TransactionComponent
+    TransactionComponent,
+    QuienesSomosComponent,
+    FooterComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
