@@ -50,6 +50,8 @@ export class RegistrationComponent implements OnInit {
       }
       this.usuarioService.crearUsuario(usuario).subscribe();
       console.log(usuario);
+    }else{
+      alert("passwords are not the same!")
     } 
   }
 }

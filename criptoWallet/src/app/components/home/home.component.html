@@ -5,18 +5,18 @@
   </div>
 
   <div class="card text-white bg-dark mb-4" style="max-width: 30rem;">
-    <div style="text-align:center;" class="card-header">Balance Total {{usuario}}</div>
+    <div style="text-align:center;" class="card-header">Total Balance {{usuario}}</div>
     <div class="card-body">
-      <h2 style="text-align:center;" class="card-title">${{cuenta.saldo}}</h2>
+      <h2 style="text-align:center;" class="card-title">{{cuenta.saldo | currency}}</h2>
       <p style="text-align:center;" class="card-text">ARS</p>
 
     </div>
     <div class="card-header">
       <div class="d-flex gap-2">
-        <button style="margin:2px 2px 2px 2px ;" type="button"  class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#depositar">Deposit</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#enviar">Send</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#comprar">Buy/Sell</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#cambiar">Change</button>
+        <button style="margin:2px 2px 2px 2px ;" type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#depositar">Deposit</button>
+        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#enviar">Send</button>
+        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comprar">Buy/Sell</button>
+        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cambiar">Change</button>
       </div>
     </div>
   </div>

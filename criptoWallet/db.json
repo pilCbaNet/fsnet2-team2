@@ -101,26 +101,32 @@
     {
       "id": 3,
       "name": "MARCO IANNUZZI",
-      "imagen": "../../../assets/imagenes/team/team.jpg"    },
+      "imagen": "../../../assets/imagenes/team/team.jpg"
+    },
     {
       "id": 4,
       "name": "OZAMIS CÉSAR",
-      "imagen": "../../../assets/imagenes/team/team.jpg"    },
+      "imagen": "../../../assets/imagenes/team/team.jpg"
+    },
     {
       "id": 5,
       "name": "JAVIER TRACHTA",
-      "imagen": "../../../assets/imagenes/team/team.jpg"    },
+      "imagen": "../../../assets/imagenes/team/team.jpg"
+    },
     {
       "id": 6,
       "name": "GABRIEL DEHESA",
-      "imagen": "../../../assets/imagenes/team/team.jpg"    },
+      "imagen": "../../../assets/imagenes/team/team.jpg"
+    },
     {
       "id": 7,
       "name": "Leonardo Costa",
-      "imagen": "../../../assets/imagenes/team/team.jpg"    },
+      "imagen": "../../../assets/imagenes/team/team.jpg"
+    },
     {
       "id": 8,
       "name": "CARDOZO PABLO SEBASTIAN",
-      "imagen": "../../../assets/imagenes/team/team.jpg"    }
+      "imagen": "../../../assets/imagenes/team/team.jpg"
+    }
   ]
 }
