@@ -31,12 +31,17 @@ export class LoginComponent implements OnInit {
   // "password": "cityslicka"
 
   login():void{
-    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data)=>{
+    if(this.loginForm.value.email != "eve.holt@reqres.in" || this.loginForm.value.password != "cityslicka" ){
+      alert('Usuario o contraseña incorrectos')
+    } else{
+      this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data)=>{
       this.token=data;
       sessionStorage.setItem('token', JSON.stringify(this.token));
       this.route.navigate(['/home']);       
       this.loginForm.reset()
-    })
+      })
+    }
+    
   }
 
 }
