@@ -38,29 +38,25 @@ export class HomeComponent implements OnInit {
         this.cuenta=data;
       },
       error:(error)=>console.log(error)
-      
     })
-
-    
   }
 
   depositar():void{
     if (this.cuenta.numeroDeCuenta == this.depositForm.get('cuenta')?.value){
        this.cuenta.saldo+=this.depositForm.get('monto')?.value
     document.getElementById('depositClose')?.click();
-    this.cuentaService.updateCuenta(this.cuenta.id, this.cuenta).subscribe()
+    this.cuentaService.updateCuenta(this.cuenta).subscribe()
     }
     else {
       alert("La cuenta ingresada es incorrecta!")
     }
-   
   }
 
   enviarDinero():void{
     if (this.cuenta.numeroDeCuenta == this.sendForm.get('cuenta')?.value){
       this.cuenta.saldo-=this.sendForm.get('monto')?.value
    document.getElementById('sendClose')?.click();
-   this.cuentaService.updateCuenta(this.cuenta.id, this.cuenta).subscribe()
+   this.cuentaService.updateCuenta(this.cuenta).subscribe()
    }
    else {
      alert("La cuenta ingresada es incorrecta!")

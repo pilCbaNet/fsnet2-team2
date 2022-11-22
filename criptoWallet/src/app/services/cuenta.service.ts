@@ -12,15 +12,19 @@ export class CuentaService {
 
   constructor(private http:HttpClient) { }
 
-  crearCuenta(cuenta:Cuenta):Observable<any>{
-    return this.http.post(this.url, cuenta);
+  createCuenta(cuenta:Cuenta):Observable<Cuenta>{
+    return this.http.post<Cuenta>(this.url, cuenta);
   }
 
-  getUCuenta(id:number):Observable<any>{
-    return this.http.get(this.url+id);
+  getUCuenta(id:number):Observable<Cuenta>{
+    return this.http.get<Cuenta>(this.url+id);
   }
 
-  updateCuenta(id:number, cuenta:Cuenta):Observable<any>{
-    return this.http.put(this.url+id, cuenta)
+  updateCuenta(cuenta:Cuenta):Observable<Cuenta>{
+    return this.http.put<Cuenta>(this.url+cuenta.id, cuenta)
+  }
+
+  deleteCuenta(cuenta:Cuenta):Observable<Cuenta>{
+    return this.http.delete<Cuenta>(this.url+cuenta.id)
   }
 }
