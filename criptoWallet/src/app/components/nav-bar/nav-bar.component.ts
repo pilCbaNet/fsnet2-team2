@@ -13,7 +13,6 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = sessionStorage.getItem('token')
-    console.log(this.token);
   }
 
   logout(){

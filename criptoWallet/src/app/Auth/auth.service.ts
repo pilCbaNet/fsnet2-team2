@@ -19,11 +19,6 @@ export class AuthService {
     }
 
     return this.http.post('https://reqres.in/api/login', body);
-
-  }
-
-  loginEmail(email:string):Observable<any>{
-     return this.http.get('http://localhost:3000/posts?usuarioRegistrado.email='+email)
   }
 
 }

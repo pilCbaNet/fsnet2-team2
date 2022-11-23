@@ -16,8 +16,8 @@ export class UsuarioService {
     return this.http.post(this.url, usuario);
   }
 
-  getUsuarios():Observable<any>{
-    return this.http.get(this.url);
+  getUsuarios():Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(this.url);
   }
 
   getUsuariobyId(id:number):Observable<any>{
