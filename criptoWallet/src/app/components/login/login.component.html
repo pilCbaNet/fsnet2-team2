@@ -12,7 +12,7 @@
               <div *ngIf="loginForm.get('email')?.errors?.['required']">
                 Email is required.
               </div>
-              <div *ngIf="loginForm.get('email')?.errors?.['email']">
+              <div *ngIf="loginForm.get('email')?.errors?.['email']||loginForm.get('email')?.errors?.['pattern']">
                 You must enter a valid email format.
               </div>
             </div>

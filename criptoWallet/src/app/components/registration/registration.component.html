@@ -36,7 +36,7 @@
           <div *ngIf="regForm.get('email')?.errors?.['required']">
             Email is required.
           </div>
-          <div *ngIf="regForm.get('email')?.errors?.['email']">
+          <div *ngIf="regForm.get('email')?.errors?.['email']||regForm.get('email')?.errors?.['pattern']">
             You must enter a valid email format.
           </div>
         </div>
