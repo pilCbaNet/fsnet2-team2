@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZM37vGtjvJ+JxxCKqOUMTqIznqvNnQ1UZS27PxwxXal9/vnyvVTvFQtMki9bBoX4Yiq50IrQsPP26HnkkrVBQg==",
+  "dgSpecHash": "0pIMeKV0L/FJbYRi4Xuhq0B9DmZxAMRr9P6Kh4yb0MCmrEk/vpZy9qKtxkYLh35vxphHOT08zzB+FzmAmg1zvw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\marco\\Desktop\\Marco\\Proyecto Grupo B\\CriptoWalletApi\\CriptoWalletApi.csproj",
+  "projectFilePath": "C:\\Users\\marco\\Desktop\\Marco\\Proyecto Grupo B\\fsnet2-team2\\CriptoWalletApi\\CriptoWalletApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\marco\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\marco\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
