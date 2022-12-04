@@ -11,13 +11,14 @@ namespace CriptoWalletApi.Models
         }
 
         public int IdCliente { get; set; }
-        public int IdDomicilio { get; set; }
+        public string Domicilio { get; set; } = null!;
         public string Nombre { get; set; } = null!;
         public string Apellido { get; set; } = null!;
-        public int IdUsuario { get; set; }
+        public string Email { get; set; } = null!;
+        public string Password { get; set; } = null!;
+        public int IdLocalidad { get; set; }
 
-        public virtual Domicilio IdDomicilioNavigation { get; set; } = null!;
-        public virtual Usuario IdUsuarioNavigation { get; set; } = null!;
+        public virtual Localidade IdLocalidadNavigation { get; set; } = null!;
         public virtual ICollection<CuentasBancaria> CuentasBancaria { get; set; }
     }
 }
