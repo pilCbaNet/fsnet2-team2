@@ -5,3 +5,16 @@
 .imgLogo{
     width: 120px;
 }
+
+.ng-invalid:not(regForm).ng-touched  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(regForm).ng-touched  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+  .alerta{
+    text-shadow: 2px 2px 5px red, -2px -2px 5px red;
+    opacity: 0.8;
+}
