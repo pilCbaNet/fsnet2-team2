@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CriptoWalletApi.Models;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,11 +9,17 @@ namespace CriptoWalletApi.Controllers
     [ApiController]
     public class TransaccionesController : ControllerBase
     {
-        // GET: api/<TransaccionesController>
+            // GET: api/<TransaccionesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Transaccione> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<Transaccione> listaTransaccione;
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                listaTransaccione = context.Transacciones.ToList();
+            }
+
+            return listaTransaccione;
         }
 
         // GET api/<TransaccionesController>/5
