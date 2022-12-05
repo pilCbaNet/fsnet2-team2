@@ -17,6 +17,8 @@ namespace CriptoWalletApi.Models
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
         public int IdLocalidad { get; set; }
+        
+
 
         public virtual Localidade IdLocalidadNavigation { get; set; } = null!;
         public virtual ICollection<CuentasBancaria> CuentasBancaria { get; set; }

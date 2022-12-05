@@ -1,5 +1,6 @@
 ﻿using CriptoWalletApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,13 +22,41 @@ namespace CriptoWalletApi.Controllers
 
             return listaCuentas;
         }
+        /*
+         
+          // GET api/<ClientesController>/5
+        [Route("GetById")]
+        [HttpGet()]
+        public Cliente Get(int id)
+        {
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                Cliente? clienteSelect = context.Clientes.FirstOrDefault(cl => cl.IdCliente == id);
+                return clienteSelect;
+            }
+        }
+         
+         
+         */
+
+
 
         // GET api/<CuentasController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [Route("Id")]
+        [HttpGet()]
+        public CuentasBancaria Get(int id)
         {
-            return "value";
+
+            using( var context = new BD_CRIPTOWALLETContext())
+            {
+                CuentasBancaria? cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
+                return cuentaBancariaSelect;
+            }
+
+            
         }
+
+
 
         // POST api/<CuentasController>
         [HttpPost]
