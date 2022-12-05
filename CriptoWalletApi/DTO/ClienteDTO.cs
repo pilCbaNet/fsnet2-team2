@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace CriptoWalletApi.Models
+﻿namespace CriptoWalletApi.DTO
 {
-    public partial class Cliente
+    public class ClienteDTO
     {
-        public Cliente()
-        {
-            CuentasBancaria = new HashSet<CuentasBancaria>();
-        }
-
         public int IdCliente { get; set; }
         public string Domicilio { get; set; } = null!;
         public string Nombre { get; set; } = null!;
@@ -18,8 +10,5 @@ namespace CriptoWalletApi.Models
         public string Password { get; set; } = null!;
         public int IdLocalidad { get; set; }
         public bool Estado { get; set; }
-
-        public virtual Localidade IdLocalidadNavigation { get; set; } = null!;
-        public virtual ICollection<CuentasBancaria> CuentasBancaria { get; set; }
     }
 }

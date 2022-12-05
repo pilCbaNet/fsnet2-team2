@@ -1,4 +1,5 @@
-﻿using CriptoWalletApi.Models;
+﻿using CriptoWalletApi.DTO;
+using CriptoWalletApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -44,23 +45,33 @@ namespace CriptoWalletApi.Controllers
 
         // POST api/<ClientesController>
         [HttpPost]
-        public void Post([FromBody] Cliente cliente)
+        public void Post([FromBody] ClienteDTO cliente)
         {
             using (var context = new BD_CRIPTOWALLETContext())
             {
-                context.Clientes.Add(cliente);
+                context.Clientes.Add(new Cliente
+                {
+                    Nombre= cliente.Nombre,
+                    Apellido= cliente.Apellido,
+                    Domicilio=cliente.Domicilio,
+                    Email=cliente.Email,
+                    Password= cliente.Password,
+                    Estado= cliente.Estado,
+                    IdLocalidad= cliente.IdLocalidad,
+                });
                 context.SaveChanges();
             }
         }
 
         // PUT api/<ClientesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Cliente cliente)
+        [HttpPut]
+        public void Put([FromBody] Cliente cliente)
         {
             using (var context = new BD_CRIPTOWALLETContext())
             {
-                var clienteSelect = context.Clientes.FirstOrDefault(cl=> cl.IdCliente == cliente.IdCliente);
-                clienteSelect = cliente;
+                var clienteSelect = context.Clientes.FirstOrDefault(cl => cl.IdCliente == cliente.IdCliente);
+                clienteSelect.Email = cliente.Email;
+                clienteSelect.Domicilio = cliente.Domicilio;
                 context.SaveChanges();
             }
         }
@@ -74,7 +85,7 @@ namespace CriptoWalletApi.Controllers
                 using (var context = new BD_CRIPTOWALLETContext())
                 {
                     Cliente? clienteAEliminar = context.Clientes.FirstOrDefault(cl => cl.IdCliente == cliente.IdCliente);
-                    context.Clientes.Remove(clienteAEliminar);
+                    clienteAEliminar.Estado = false;
                     context.SaveChanges();
                 }
             }
