@@ -22,24 +22,7 @@ namespace CriptoWalletApi.Controllers
 
             return listaCuentas;
         }
-        /*
-         
-          // GET api/<ClientesController>/5
-        [Route("GetById")]
-        [HttpGet()]
-        public Cliente Get(int id)
-        {
-            using (var context = new BD_CRIPTOWALLETContext())
-            {
-                Cliente? clienteSelect = context.Clientes.FirstOrDefault(cl => cl.IdCliente == id);
-                return clienteSelect;
-            }
-        }
-         
-         
-         */
-
-
+      
 
         // GET api/<CuentasController>/5
         [Route("Id")]
