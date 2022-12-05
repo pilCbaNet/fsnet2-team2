@@ -46,14 +46,12 @@ namespace CriptoWalletApi.Controllers
         [HttpGet()]
         public CuentasBancaria Get(int id)
         {
+                using (var context = new BD_CRIPTOWALLETContext())
+                {
+                    CuentasBancaria? cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
+                    return cuentaBancariaSelect;
+                }
 
-            using( var context = new BD_CRIPTOWALLETContext())
-            {
-                CuentasBancaria? cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
-                return cuentaBancariaSelect;
-            }
-
-            
         }
 
 
