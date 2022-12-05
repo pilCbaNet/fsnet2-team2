@@ -50,22 +50,23 @@ namespace CriptoWalletApi.Controllers
             using (var context = new BD_CRIPTOWALLETContext())
             {
                 context.Clientes.Add(new Cliente
-                {
-                    Nombre= cliente.Nombre,
-                    Apellido= cliente.Apellido,
-                    Domicilio=cliente.Domicilio,
-                    Email=cliente.Email,
-                    Password= cliente.Password,
-                    Estado= cliente.Estado,
-                    IdLocalidad= cliente.IdLocalidad,
-                });
+                {   
+                    Nombre = cliente.Nombre,
+                    Apellido = cliente.Apellido,
+                    Domicilio = cliente.Domicilio,
+                    Email = cliente.Email,
+                    Password = cliente.Password,
+                    Estado = cliente.Estado,
+                    IdLocalidad = cliente.IdLocalidad,
+                    
+                });                
                 context.SaveChanges();
             }
         }
 
         // PUT api/<ClientesController>/5
         [HttpPut]
-        public void Put([FromBody] Cliente cliente)
+        public void Put([FromBody] ClienteDTO cliente)
         {
             using (var context = new BD_CRIPTOWALLETContext())
             {
@@ -78,13 +79,13 @@ namespace CriptoWalletApi.Controllers
 
         // DELETE api/<ClientesController>/5
         [HttpDelete("{id}")]
-        public void Delete(Cliente cliente)
+        public void Delete(int id)
         {
             try
             {
                 using (var context = new BD_CRIPTOWALLETContext())
                 {
-                    Cliente? clienteAEliminar = context.Clientes.FirstOrDefault(cl => cl.IdCliente == cliente.IdCliente);
+                    Cliente? clienteAEliminar = context.Clientes.FirstOrDefault(cl => cl.IdCliente == id);
                     clienteAEliminar.Estado = false;
                     context.SaveChanges();
                 }

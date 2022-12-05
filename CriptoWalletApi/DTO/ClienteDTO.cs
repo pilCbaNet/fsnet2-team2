@@ -1,4 +1,6 @@
-﻿namespace CriptoWalletApi.DTO
+﻿using CriptoWalletApi.Models;
+
+namespace CriptoWalletApi.DTO
 {
     public class ClienteDTO
     {
