@@ -7,7 +7,4 @@ bin
 obj
 *.suo
 *.user
-/CriptoWalletApi/.vs/CriptoWalletApi/FileContentIndex/28a267f8-c207-4b38-b3a5-c67bab01a8a3.vsidx
-/CriptoWalletApi/.vs/CriptoWalletApi/FileContentIndex/88cb8f7e-c808-4136-91c0-47a1e0cff769.vsidx
-/CriptoWalletApi/.vs/CriptoWalletApi/FileContentIndex/e6d1a00e-8b5a-4f46-a4da-9ed0f87e6287.vsidx
-/CriptoWalletApi/.vs/CriptoWalletApi/v17/.suo
+/CriptoWalletApi/.vs/
