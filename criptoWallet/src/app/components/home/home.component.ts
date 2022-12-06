@@ -11,14 +11,15 @@ import { CuentaService } from 'src/app/services/cuenta.service';
 })
 export class HomeComponent implements OnInit {
 
-  //TODO TRAER ESTOS DATOS DEL BACKEND
   usuario!: Usuario; 
   depositForm!:FormGroup;
   sendForm!:FormGroup;
   cuenta:Cuenta={
-    saldo: 0,
-    numeroDeCuenta: "",
-    id: 0
+    monto: 0,
+    numeroDeCuenta: 0,
+    id: 0,
+    alias:"",
+    cbu:0
   }
 
   constructor(private fb:FormBuilder, private cuentaService:CuentaService) {
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
 
   depositar():void{
     if (this.cuenta.numeroDeCuenta == this.depositForm.get('cuenta')?.value){
-       this.cuenta.saldo+=this.depositForm.get('monto')?.value
+       this.cuenta.monto+=this.depositForm.get('monto')?.value
     document.getElementById('depositClose')?.click();
     this.cuentaService.updateCuenta(this.cuenta).subscribe()
     }
@@ -54,7 +55,7 @@ export class HomeComponent implements OnInit {
 
   enviarDinero():void{
     if (this.cuenta.numeroDeCuenta == this.sendForm.get('cuenta')?.value){
-      this.cuenta.saldo-=this.sendForm.get('monto')?.value
+      this.cuenta.monto-=this.sendForm.get('monto')?.value
    document.getElementById('sendClose')?.click();
    this.cuentaService.updateCuenta(this.cuenta).subscribe()
    }

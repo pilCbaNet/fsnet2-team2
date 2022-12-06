@@ -43,10 +43,6 @@ export class RegistrationComponent implements OnInit {
         address: this.regForm.get('address')?.value,
         city: this.regForm.get('city')?.value,
         terms: this.regForm.get('terms')?.value,
-        usuarioRegistrado:{
-          email: this.regForm.get('email')?.value,
-          password: this.regForm.get('password')?.value
-        }
       }
       this.usuarioService.crearUsuario(usuario).subscribe();
       console.log(usuario);

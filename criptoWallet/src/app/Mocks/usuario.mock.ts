@@ -8,10 +8,6 @@ let usuarioMock:Usuario = {
     address: "Calle falsa 123",
     city: "Buenos Aires",
     terms: true,
-    usuarioRegistrado:{
-        email: "jPerez@hotmail.com",
-        password: "123456"
-    }
 }
 
 export default usuarioMock;

@@ -7,7 +7,7 @@
   <div class="card text-white bg-dark mb-4" style="max-width: 30rem;">
     <div style="text-align:center;" class="card-header">Balance Total {{usuario}}</div>
     <div class="card-body">
-      <h2 style="text-align:center;" class="card-title">${{cuenta.saldo}}</h2>
+      <h2 style="text-align:center;" class="card-title">${{cuenta.monto}}</h2>
       <p style="text-align:center;" class="card-text">ARS</p>
 
     </div>
@@ -88,6 +88,18 @@
           </div>
           <div class="col-md-12">
             <label for="cuenta" class="form-label"  >From Account number:</label>
+            <input type="text" class="form-control" id="cuenta" formControlName="cuenta">
+            <div *ngIf="sendForm.get('cuenta')?.invalid && (sendForm.get('cuenta')?.dirty || sendForm.get('cuenta')?.touched)" class="alerta">
+              <div *ngIf="sendForm.get('cuenta')?.errors?.['required']">
+                Account is required.
+              </div>
+              <div *ngIf="sendForm.get('cuenta')?.errors?.['minlength']">
+                Account must have at least 9 characters.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <label for="cuenta" class="form-label"  >To account:</label>
             <input type="text" class="form-control" id="cuenta" formControlName="cuenta">
             <div *ngIf="sendForm.get('cuenta')?.invalid && (sendForm.get('cuenta')?.dirty || sendForm.get('cuenta')?.touched)" class="alerta">
               <div *ngIf="sendForm.get('cuenta')?.errors?.['required']">

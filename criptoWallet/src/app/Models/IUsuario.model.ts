@@ -1,5 +1,3 @@
-import { UsuarioRegistrado } from "./IUsuarioRegistrado.model";
-
 export interface Usuario{
     nombre: string;
     apellido: string;
@@ -8,5 +6,4 @@ export interface Usuario{
     address: string;
     city: string;
     terms: boolean;
-    usuarioRegistrado: UsuarioRegistrado;
 }
