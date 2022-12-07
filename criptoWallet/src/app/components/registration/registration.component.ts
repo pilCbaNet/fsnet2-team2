@@ -36,6 +36,7 @@ export class RegistrationComponent implements OnInit {
 
     if(this.regForm.valid && this.regForm.value.password == this.regForm.value.password2){
       let usuario:Usuario = {
+        id:0,
         nombre: this.regForm.get('name')?.value,
         apellido: this.regForm.get('lastName')?.value,
         email: this.regForm.get('email')?.value,

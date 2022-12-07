@@ -24,7 +24,7 @@
   "cuenta": [
     {
       "id": 1,
-      "usuarioId":1,
+      "usuarioId":2,
       "numeroDeCuenta": 123456789,
       "monto": 95000,
       "alias": "usuarioTest",
