@@ -8,3 +8,6 @@ obj
 *.suo
 *.user
 /CriptoWalletApi/.vs/
+CriptoWalletApi/bin/
+CriptoWalletApi/obj/
+CriptoWalletApi/.vs/

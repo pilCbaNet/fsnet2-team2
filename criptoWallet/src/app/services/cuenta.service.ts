@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Cuenta } from '../Models/ICuenta.mode.';
 
 @Injectable({
@@ -8,7 +9,8 @@ import { Cuenta } from '../Models/ICuenta.mode.';
 })
 export class CuentaService {
 
-  url:string = 'http://localhost:3000/cuenta/';
+  url = environment.url
+  cuentaUrl:string = 'http://localhost:3000/cuenta/';
 
   constructor(private http:HttpClient) { }
 
