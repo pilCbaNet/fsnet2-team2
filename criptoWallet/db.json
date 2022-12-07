@@ -4,7 +4,7 @@
       "id": 1,
       "nombre": "Daniel",
       "apellido": "Herrera",
-      "email": "dherrera@gmail.com@live.com.ar",
+      "email": "dherrera@gmail.com",
       "password": "123456",
       "address": "Belgrano 3652",
       "city": "Cordoba",
@@ -24,6 +24,7 @@
   "cuenta": [
     {
       "id": 1,
+      "usuarioId":1,
       "numeroDeCuenta": 123456789,
       "monto": 95000,
       "alias": "usuarioTest",

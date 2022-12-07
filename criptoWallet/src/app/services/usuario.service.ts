@@ -10,6 +10,8 @@ export class UsuarioService {
 
   url:string = 'http://localhost:3000/posts/';
 
+  usuarioLogeado?:Usuario;
+
   constructor(private http:HttpClient) { }
 
   crearUsuario(usuario:Usuario):Observable<any>{
@@ -22,6 +24,10 @@ export class UsuarioService {
 
   getUsuariobyId(id:number):Observable<any>{
     return this.http.get(this.url+id);
+  }
+
+  getUsuariobyEmail(email:string):Observable<any>{
+    return this.http.get(this.url+"?email="+email);
   }
 
   updateUsuario(id:number, usuario:Usuario):Observable<any>{

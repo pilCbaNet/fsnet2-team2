@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   sendForm!:FormGroup;
   cuenta:Cuenta={
     monto: 0,
+    usuarioId:0,
     numeroDeCuenta: 0,
     id: 0,
     alias:"",

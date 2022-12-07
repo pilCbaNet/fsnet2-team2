@@ -26,16 +26,22 @@ export class LoginComponent implements OnInit {
     this.usuarioService.getUsuarios().subscribe((data)=>this.listaUsuarios = data);
   }
 
-  // "email": "eve.holt@reqres.in",
-  // "password": "cityslicka"
 
   login():void{
-    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data)=>{
-      this.token=data;
+    let usuarioLogeado = this.listaUsuarios.find(user => user.email == this.loginForm.value.email && user.terms == true);
+    if (!usuarioLogeado){
+      alert("El mail ingresado no corresponde a un usuario activo")
+    }
+    else if(usuarioLogeado?.password == this.loginForm.value.password){
+      this.token = usuarioLogeado?.email
+      this.usuarioService.usuarioLogeado=usuarioLogeado;
       sessionStorage.setItem('token', JSON.stringify(this.token));
       this.route.navigate(['/home']);       
       this.loginForm.reset()
-    })
+    }
+    else{
+      alert("La contraseña ingresada es incorrecta")
+    }
   }
 
   
