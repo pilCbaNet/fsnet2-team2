@@ -36,12 +36,13 @@ export class HomeComponent implements OnInit, DoCheck{
 
     this.createForm = this.fb.group({
       dni:['',[Validators.required, Validators.minLength(8)]],
-      alias:['',[Validators.required, Validators.minLength(9)]]
+      alias:['',[Validators.required, Validators.minLength(5)]]
     });
 
     this.changeForm = this.fb.group({
       accountNumber: ['',[Validators.required, Validators.minLength(9)]]
     })
+
     this.cuentaActiva = this.cuentaService.cuentaUsuarioActivo[0];
    }
 

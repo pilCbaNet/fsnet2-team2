@@ -15,8 +15,8 @@
       <div class="d-flex justify-content-center align-items-center gap-2">
         <button style="margin:2px 2px 2px 2px ;" type="button"  class="btn btn-outline-primary text-white" data-bs-toggle="modal" data-bs-target="#depositar">Deposit</button>
         <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-primary text-white" data-bs-toggle="modal" data-bs-target="#enviar">Send</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-info text-white" data-bs-toggle="modal" data-bs-target="#comprar">Create</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-info text-white" data-bs-toggle="modal" data-bs-target="#cambiar" (click)="getCuentas()">Change</button>
+        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-info text-white" data-bs-toggle="modal" data-bs-target="#comprar"(click)="getCuentas()">Create</button>
+        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-info text-white" data-bs-toggle="modal" data-bs-target="#cambiar" (click)="getCuentas()">Select</button>
       </div>
     </div>
   </div>
@@ -140,6 +140,9 @@
               <div *ngIf="createForm.get('dni')?.errors?.['required']">
                 DNI is required.
               </div>
+              <div *ngIf="createForm.get('dni')?.errors?.['minlength']">
+                DNI must have at least 8 characters.
+              </div>
             </div>
           </div>
           <div class="col-md-12">
@@ -150,7 +153,7 @@
                 Alias is required.
               </div>
               <div *ngIf="createForm.get('alias')?.errors?.['minlength']">
-                Alias must have at least 9 characters.
+                Alias must have at least 5 characters.
               </div>
             </div>
           </div>
@@ -172,7 +175,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 " id="exampleModalLabel">Change Account</h1>
+        <h1 class="modal-title fs-5 " id="exampleModalLabel">Select Account</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
@@ -184,7 +187,7 @@
           </select>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-primary text-white"><a class="text-white">Create new account</a></button>
+            <button type="submit" class="btn btn-outline-primary text-white"><a class="text-white">Select account</a></button>
           </div>
       </form>
       </div>
