@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cuenta } from 'src/app/Models/ICuenta.mode.';
+import { CuentaActiva } from 'src/app/Models/ICuentaActivs.model';
 import { Usuario } from 'src/app/Models/IUsuario.model';
 import { CuentaService } from 'src/app/services/cuenta.service';
 
@@ -14,13 +15,15 @@ export class HomeComponent implements OnInit {
   usuario!: Usuario; 
   depositForm!:FormGroup;
   sendForm!:FormGroup;
-  cuenta:Cuenta={
+  cuenta:CuentaActiva={
     monto: 0,
-    usuarioId:0,
-    numeroDeCuenta: 0,
-    id: 0,
+    idCliente:0,
+    numero_de_cuenta: 0,
     alias:"",
-    cbu:0
+    cbu:0,
+    idCuenta:0,
+    estado:true,
+    transacciones:[]
   }
 
   constructor(private fb:FormBuilder, private cuentaService:CuentaService) {
@@ -35,19 +38,16 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.cuentaService.getUCuenta(1).subscribe({
-      next:(data)=>{
-        this.cuenta=data;
-      },
-      error:(error)=>console.log(error)
-    })
+    this.cuenta = this.cuentaService.cuentaUsuarioActivo[0];
+    console.log(this.cuenta)
+
   }
 
   depositar():void{
-    if (this.cuenta.numeroDeCuenta == this.depositForm.get('cuenta')?.value){
+    if (this.cuenta.numero_de_cuenta == this.depositForm.get('cuenta')?.value){
        this.cuenta.monto+=this.depositForm.get('monto')?.value
     document.getElementById('depositClose')?.click();
-    this.cuentaService.updateCuenta(this.cuenta).subscribe()
+    
     }
     else {
       alert("La cuenta ingresada es incorrecta!")
@@ -55,10 +55,10 @@ export class HomeComponent implements OnInit {
   }
 
   enviarDinero():void{
-    if (this.cuenta.numeroDeCuenta == this.sendForm.get('cuenta')?.value){
+    if (this.cuenta.numero_de_cuenta == this.sendForm.get('cuenta')?.value){
       this.cuenta.monto-=this.sendForm.get('monto')?.value
    document.getElementById('sendClose')?.click();
-   this.cuentaService.updateCuenta(this.cuenta).subscribe()
+
    }
    else {
      alert("La cuenta ingresada es incorrecta!")

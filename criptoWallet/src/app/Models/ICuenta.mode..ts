@@ -1,8 +1,9 @@
 export interface Cuenta{
     id: number;
-    usuarioId:number;
-    numeroDeCuenta: number;
+    id_cliente:number;
+    numero_de_cuenta: number;
     monto: number;
     alias:string;
     cbu:number
+    estado:boolean
 }
