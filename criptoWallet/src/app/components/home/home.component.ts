@@ -15,16 +15,8 @@ export class HomeComponent implements OnInit {
   usuario!: Usuario; 
   depositForm!:FormGroup;
   sendForm!:FormGroup;
-  cuenta:CuentaActiva={
-    monto: 0,
-    idCliente:0,
-    numero_de_cuenta: 0,
-    alias:"",
-    cbu:0,
-    idCuenta:0,
-    estado:true,
-    transacciones:[]
-  }
+  cuentaActiva!:CuentaActiva;
+
 
   constructor(private fb:FormBuilder, private cuentaService:CuentaService) {
     this.depositForm = this.fb.group({
@@ -38,16 +30,26 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.cuenta = this.cuentaService.cuentaUsuarioActivo[0];
-    console.log(this.cuenta)
-
+    this.cuentaActiva = this.cuentaService.cuentaUsuarioActivo[0]
+    console.log(this.cuentaActiva)
   }
 
   depositar():void{
-    if (this.cuenta.numero_de_cuenta == this.depositForm.get('cuenta')?.value){
-       this.cuenta.monto+=this.depositForm.get('monto')?.value
-    document.getElementById('depositClose')?.click();
-    
+    if (this.cuentaActiva.numeroDeCuenta == parseInt(this.depositForm.get('cuenta')?.value)){
+      
+      this.cuentaActiva.monto+=this.depositForm.get('monto')?.value;
+      document.getElementById('depositClose')?.click();
+      let cuentaUpdate:Cuenta = {
+        alias:this.cuentaActiva.alias,
+        cbu:this.cuentaActiva.cbu,
+        estado:this.cuentaActiva.estado,
+        id:this.cuentaActiva.idCuenta,
+        id_cliente:this.cuentaActiva.idCliente,
+        monto:this.cuentaActiva.monto,
+        numeroDeCuenta:this.cuentaActiva.numeroDeCuenta
+      }
+      console.log(cuentaUpdate);
+      this.cuentaService.updateCuenta(cuentaUpdate).subscribe(()=>alert("Deposit made saccessfully!"));
     }
     else {
       alert("La cuenta ingresada es incorrecta!")
@@ -55,14 +57,14 @@ export class HomeComponent implements OnInit {
   }
 
   enviarDinero():void{
-    if (this.cuenta.numero_de_cuenta == this.sendForm.get('cuenta')?.value){
-      this.cuenta.monto-=this.sendForm.get('monto')?.value
-   document.getElementById('sendClose')?.click();
+  //   if (this.cuenta.numero_de_cuenta == this.sendForm.get('cuenta')?.value){
+  //     this.cuenta.monto-=this.sendForm.get('monto')?.value
+  //  document.getElementById('sendClose')?.click();
 
+  //  }
+  //  else {
+  //    alert("La cuenta ingresada es incorrecta!")
+  //  }
    }
-   else {
-     alert("La cuenta ingresada es incorrecta!")
-   }
-  }
 
 }

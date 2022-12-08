@@ -46,7 +46,7 @@ namespace CriptoWalletApi.Controllers
                     Cbu=cuentaDTO.Cbu,
                     Alias=cuentaDTO.Alias,
                     Monto=cuentaDTO.Monto,
-                    NumeroDeCuenta=cuentaDTO.Numero_de_cuenta,
+                    NumeroDeCuenta=cuentaDTO.NumeroDeCuenta,
                     Estado = cuentaDTO.Estado
                 });
 
@@ -55,12 +55,12 @@ namespace CriptoWalletApi.Controllers
         }
 
         // PUT api/<CuentasController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CuentaDTO nuevaCuenta)
+        [HttpPut("{numero}")]
+        public void Put([FromBody] CuentaDTO nuevaCuenta)
         {
             using (var context = new BD_CRIPTOWALLETContext())
             {
-                var cuenta = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
+                var cuenta = context.CuentasBancarias.FirstOrDefault(cb => cb.NumeroDeCuenta == nuevaCuenta.NumeroDeCuenta);
                 cuenta.Monto = nuevaCuenta.Monto;
 
                 context.SaveChanges();

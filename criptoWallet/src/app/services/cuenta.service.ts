@@ -26,7 +26,7 @@ export class CuentaService {
   }
 
   updateCuenta(cuenta:Cuenta):Observable<Cuenta>{
-    return this.http.put<Cuenta>("https://localhost:7155/api/Cuentas/"+cuenta.id, cuenta)
+    return this.http.put<Cuenta>("https://localhost:7155/api/Cuentas/"+cuenta.numeroDeCuenta, cuenta)
   }
 
   deleteCuenta(cuenta:Cuenta):Observable<Cuenta>{

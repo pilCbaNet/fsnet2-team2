@@ -14,11 +14,7 @@ export class TransactionComponent implements OnInit {
   constructor(private transactionService:TransactionsService) { }
 
   ngOnInit(): void {
-    this.transactionService.getTrasactions().subscribe({
-      next:(data)=>{this.movimientos=data
-      console.log(this.movimientos)}
-    })
-    
+
   }
 
 }

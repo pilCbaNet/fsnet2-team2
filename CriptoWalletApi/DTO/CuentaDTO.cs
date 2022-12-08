@@ -6,7 +6,7 @@
         public int Cbu { get; set; }
         public string Alias { get; set; }
         public int Monto { get; set; }
-        public int Numero_de_cuenta { get; set; }
+        public int NumeroDeCuenta { get; set; }
         public bool Estado { get; set; }
     }
 }

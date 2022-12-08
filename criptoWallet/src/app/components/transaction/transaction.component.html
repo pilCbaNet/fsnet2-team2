@@ -15,10 +15,10 @@
       </thead>
       <tbody >
         <tr *ngFor="let movimiento of movimientos">
-          <th scope="row">{{movimiento.id}}</th>
-          <td>{{movimiento.tipoDeTransaccion}}</td>
-          <td>{{movimiento.receptorNombre}}</td>
-          <td>{{movimiento.cuentaReceptor}}</td>
+          <th scope="row">{{movimiento.idCuenta}}</th>
+          <td>{{movimiento.idTipoMovimientos}}</td>
+          <td>{{movimiento.cuentaOrigen}}</td>
+          <td>{{movimiento.cuentaDestino}}</td>
           <td>{{movimiento.monto | currency}}</td>
         </tr>
       </tbody>
