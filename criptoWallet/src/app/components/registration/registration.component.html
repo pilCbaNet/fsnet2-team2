@@ -76,7 +76,10 @@
         </div>
         <div class="col-md-6">
           <label for="inputCity" class="form-label">City</label>
-          <input type="text" class="form-control" id="inputCity" placeholder="enter your city" formControlName="city">
+          <select class="form-control" id="inputCity" placeholder="enter your city" formControlName="city">
+            <option value="1">Cordoba</option>
+            <option value="2">Bueno Aires</option>
+          </select>
           <div *ngIf="regForm.get('city')?.invalid && (regForm.get('city')?.dirty || regForm.get('city')?.touched)" class="alerta">
             <div *ngIf="regForm.get('city')?.errors?.['required']">
               This field is required.

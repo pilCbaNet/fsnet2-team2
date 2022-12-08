@@ -20,7 +20,7 @@ export class UsuarioService {
   constructor(private http:HttpClient) { }
 
   crearUsuario(usuario:Usuario):Observable<any>{
-    return this.http.post(this.url, usuario);
+    return this.http.post<any>("https://localhost:7155/api/Clientes", usuario);
   }
 
   getUsuarios():Observable<Usuario[]>{

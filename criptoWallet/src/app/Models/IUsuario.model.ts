@@ -1,10 +1,10 @@
 export interface Usuario{
-    id:number
+    idCliente:number
     nombre: string;
     apellido: string;
     email: string;
     password: string;
-    address: string;
-    city: string;
-    terms: boolean;
+    domicilio: string;
+    idLocalidad: number;
+    estado: boolean;
 }
