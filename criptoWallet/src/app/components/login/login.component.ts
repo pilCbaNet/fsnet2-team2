@@ -15,7 +15,6 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
   token!:any;
-  listaUsuarios:Usuario[]=[]
   usuarioActivo!:UsuarioActivo
 
   constructor(private fb:FormBuilder, private cuentaService:CuentaService ,private route:Router, private usuarioService:UsuarioService) {
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.usuarioService.getUsuarios().subscribe((data)=>this.listaUsuarios = data);
+    
   }
 
   login():void{
@@ -37,6 +36,7 @@ export class LoginComponent implements OnInit {
     this.usuarioService.getUsuariobyEmail(loggedUser).subscribe((data) =>{
       if(data){
         this.usuarioActivo = data;
+        this.usuarioService.usuarioLogeado = this.usuarioActivo
         this.cuentaService.cuentaUsuarioActivo = this.usuarioActivo.cuentasBancaria
         this.token = this.usuarioActivo.nombre+"."+this.usuarioActivo.apellido
         sessionStorage.setItem('token', JSON.stringify(this.token))

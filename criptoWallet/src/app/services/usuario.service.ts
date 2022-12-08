@@ -13,7 +13,7 @@ import { Usuario } from '../Models/IUsuario.model';
 export class UsuarioService {
 
   url:string = environment.url;
-  usuarioLogeado?:Usuario;
+  usuarioLogeado!:Usuario;
 
 
 

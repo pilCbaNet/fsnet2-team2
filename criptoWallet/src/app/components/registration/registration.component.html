@@ -66,6 +66,15 @@
           </div>
         </div>
         <div class="col-6">
+          <label for="inputDni" class="form-label">DNI</label>
+          <input type="number" class="form-control" id="inputDni" placeholder="your DNI number here" formControlName="dni">
+          <div *ngIf="regForm.get('dni')?.invalid && (regForm.get('dni')?.dirty || regForm.get('dni')?.touched)" class="alerta">
+            <div *ngIf="regForm.get('dni')?.errors?.['required']">
+              This field is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
           <label for="inputAddress" class="form-label">Address</label>
           <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St example" formControlName="address">
           <div *ngIf="regForm.get('address')?.invalid && (regForm.get('address')?.dirty || regForm.get('address')?.touched)" class="alerta">

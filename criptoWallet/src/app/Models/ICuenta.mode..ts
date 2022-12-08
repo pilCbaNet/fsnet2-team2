@@ -1,6 +1,6 @@
 export interface Cuenta{
     id: number;
-    id_cliente:number;
+    idCliente:number;
     numeroDeCuenta: number;
     monto: number;
     alias:string;
