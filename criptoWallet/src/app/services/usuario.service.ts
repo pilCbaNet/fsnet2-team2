@@ -24,11 +24,11 @@ export class UsuarioService {
   }
 
   getUsuarios():Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(this.url+"Cliente");
+    return this.http.get<Usuario[]>("https://localhost:7155/api/Clientes");
   }
 
   getUsuariobyId(id:number):Observable<any>{
-    return this.http.get(this.url+"Cliente/"+id);
+    return this.http.get("https://localhost:7155/api/Clientes/"+id);
   }
 
   getUsuariobyEmail(body:LoggedUser):Observable<any>{
@@ -36,11 +36,11 @@ export class UsuarioService {
   }
 
   updateUsuario(id:number, usuario:Usuario):Observable<any>{
-    return this.http.put(this.url+"Cliente/"+id, usuario);
+    return this.http.put("https://localhost:7155/api/Clientes/"+id, usuario);
   }
 
   deleteUsuario(id:number):Observable<any>{
-    return this.http.delete(this.url+"Cliente/"+id);
+    return this.http.delete("https://localhost:7155/api/Clientes/"+id);
   }
 
 }

@@ -1,38 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cuenta } from 'src/app/Models/ICuenta.mode.';
 import { CuentaActiva } from 'src/app/Models/ICuentaActivs.model';
 import { Usuario } from 'src/app/Models/IUsuario.model';
 import { CuentaService } from 'src/app/services/cuenta.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, DoCheck{
 
   usuario!: Usuario; 
   depositForm!:FormGroup;
   sendForm!:FormGroup;
+  createForm!:FormGroup;
+  changeForm!:FormGroup;
   cuentaActiva!:CuentaActiva;
 
 
-  constructor(private fb:FormBuilder, private cuentaService:CuentaService) {
+  constructor(private fb:FormBuilder, private cuentaService:CuentaService, private usuarioService:UsuarioService) {
+
     this.depositForm = this.fb.group({
       montoDeposito:['',[Validators.required, Validators.min(1)]],
       cuentaDeposito:['',[Validators.required, Validators.minLength(9)]]
-    })
+    });
+
     this.sendForm = this.fb.group({
       montoEnvio:['',[Validators.required, Validators.min(1)]],
       cuentaEnvio:['',[Validators.required, Validators.minLength(9)]],
       cuentaReceptor:['',[Validators.required, Validators.minLength(9)]]
+    });
+
+    this.createForm = this.fb.group({
+      dni:['',[Validators.required, Validators.minLength(8)]],
+      alias:['',[Validators.required, Validators.minLength(9)]]
+    });
+
+    this.changeForm = this.fb.group({
+      acountNumber: ['',[Validators.required, Validators.minLength(9)]]
     })
    }
 
+  ngDoCheck(): void {
+    this.usuario = this.usuarioService.usuarioLogeado
+  }
+
   ngOnInit(): void {
     this.cuentaActiva = this.cuentaService.cuentaUsuarioActivo[0]
-    console.log(this.cuentaActiva)
   }
 
   depositar():void{
@@ -49,7 +66,6 @@ export class HomeComponent implements OnInit {
         monto:this.cuentaActiva.monto,
         numeroDeCuenta:this.cuentaActiva.numeroDeCuenta
       }
-      console.log(cuentaUpdate);
       this.cuentaService.updateCuenta(cuentaUpdate).subscribe(()=>alert("Deposit made saccessfully!"));
     }
     else {
@@ -71,12 +87,25 @@ export class HomeComponent implements OnInit {
         monto:this.cuentaActiva.monto,
         numeroDeCuenta:this.cuentaActiva.numeroDeCuenta
       }
-      console.log(cuentaUpdate);
       this.cuentaService.updateCuenta(cuentaUpdate).subscribe(()=>alert("Transfer made saccessfully!"));
     }
     else {
       alert("La cuenta ingresada es incorrecta!")
     }
    }
+
+   createAccount(){
+    let nuevaCuenta:Cuenta = {
+      id: 0,
+      idCliente: this.usuario.idCliente,
+      numeroDeCuenta: parseInt(9+this.createForm.get('dni')?.value) ,
+      monto: 0,
+      alias: this.createForm.get('alias')?.value,
+      cbu: parseInt(9+this.createForm.get('dni')?.value),
+      estado: false
+    }
+    this.cuentaService.createCuenta(nuevaCuenta).subscribe(()=>alert('Cuenta Creada con exito'))
+   }
+
 
 }
