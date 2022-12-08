@@ -64,6 +64,34 @@ namespace CriptoWalletApi.Controllers
             }
         }
 
+        // POST api/<ClientesController>
+        [Route("Login")]
+        [HttpPost]
+        public Cliente Login([FromBody] LoginDTO login)
+        {
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+
+                var clientSelect = context.Clientes.FirstOrDefault(cl => cl.Email== login.Email && cl.Password == login.Password);
+                if (clientSelect != null)
+                {
+                    var cuentas = context.CuentasBancarias.FirstOrDefault(cu => cu.IdCliente == clientSelect.IdCliente);
+                    var transacciones = context.Transacciones.FirstOrDefault(tr => tr.IdCuenta == cuentas.IdCuenta);
+                    cuentas.Transacciones.Add(transacciones);
+                    clientSelect.CuentasBancaria.Add(cuentas);
+                    return clientSelect;
+                }
+                else
+                {
+                    clientSelect = null;
+                    return clientSelect;
+                }
+
+            }
+
+
+        }
+
         // PUT api/<ClientesController>/5
         [HttpPut]
         public void Put([FromBody] ClienteDTO cliente)
