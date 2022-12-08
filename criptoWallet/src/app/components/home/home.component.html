@@ -16,7 +16,7 @@
         <button style="margin:2px 2px 2px 2px ;" type="button"  class="btn btn-outline-primary text-white" data-bs-toggle="modal" data-bs-target="#depositar">Deposit</button>
         <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-primary text-white" data-bs-toggle="modal" data-bs-target="#enviar">Send</button>
         <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-info text-white" data-bs-toggle="modal" data-bs-target="#comprar">Create</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-info text-white" data-bs-toggle="modal" data-bs-target="#cambiar">Change</button>
+        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-info text-white" data-bs-toggle="modal" data-bs-target="#cambiar" (click)="getCuentas()">Change</button>
       </div>
     </div>
   </div>
@@ -176,20 +176,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
-        <form [formGroup]="changeForm" (ngSubmit)="createAccount()" class="col-7 d-flex flex-column gap-5">
+        <form [formGroup]="changeForm" (ngSubmit)="changeAccount()" class="col-7 d-flex flex-column gap-5">
           <div class="col-md-12">
-            <label for="acountNumber" class="form-label" >Choose one account:</label>
-            <select type="number" class="form-control" id="acountNumber" formControlName="acountNumber">
-              <option value="">Cuenta 1</option>
-            </select>
-            <div *ngIf="changeForm.get('acountNumber')?.invalid" class="alerta">
-              <div *ngIf="changeForm.get('acountNumber')?.errors?.['required']">
-                Must select an account.
-              </div>
-            </div>
+            <label for="accountNumber" class="form-label">Select an Account</label>
+          <select class="form-control" id="accountNumber" placeholder="select one option" formControlName="accountNumber">
+            <option *ngFor="let cuenta of cuentasDeUsuario" [value]="cuenta.idCuenta" >{{cuenta.numeroDeCuenta}}</option>
+          </select>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="changeForm.invalid"><a class="text-white">Create new account</a></button>
+            <button type="submit" class="btn btn-outline-primary text-white"><a class="text-white">Create new account</a></button>
           </div>
       </form>
       </div>

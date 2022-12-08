@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Cuenta } from '../Models/ICuenta.mode.';
 import { CuentaActiva } from '../Models/ICuentaActivs.model';
+import { Usuario } from '../Models/IUsuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,12 @@ export class CuentaService {
     return this.http.post<Cuenta>("https://localhost:7155/api/Cuentas", cuenta);
   }
 
-  getUCuenta(id:number):Observable<Cuenta>{
-    return this.http.get<Cuenta>("https://localhost:7155/api/Cuentas/"+id);
+  getCuentabyId(usuario:Usuario):Observable<CuentaActiva[]>{
+    return this.http.post<CuentaActiva[]>("https://localhost:7155/api/Cuentas/byClient", usuario);
+  }
+
+  getCuenta(id:number):Observable<CuentaActiva>{
+    return this.http.get<CuentaActiva>("https://localhost:7155/api/Cuentas/"+id);
   }
 
   updateCuenta(cuenta:Cuenta):Observable<Cuenta>{

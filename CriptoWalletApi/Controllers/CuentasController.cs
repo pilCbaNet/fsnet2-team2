@@ -34,6 +34,17 @@ namespace CriptoWalletApi.Controllers
             }
         }
 
+        [Route("byClient")]
+        [HttpPost]
+        public IEnumerable<CuentasBancaria> GetbyClient([FromBody]ClienteDTO cliente)
+        {
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                var cuenta = context.CuentasBancarias.Where(cb => cb.IdCliente == cliente.IdCliente).ToList();
+                return cuenta;
+            }
+        }
+
         // POST api/<CuentasController>
         [HttpPost]
         public void Post([FromBody] CuentaDTO cuentaDTO)

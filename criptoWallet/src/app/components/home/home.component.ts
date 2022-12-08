@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, DoCheck{
   createForm!:FormGroup;
   changeForm!:FormGroup;
   cuentaActiva!:CuentaActiva;
-
+  cuentasDeUsuario:CuentaActiva[] = []
 
   constructor(private fb:FormBuilder, private cuentaService:CuentaService, private usuarioService:UsuarioService) {
 
@@ -40,16 +40,19 @@ export class HomeComponent implements OnInit, DoCheck{
     });
 
     this.changeForm = this.fb.group({
-      acountNumber: ['',[Validators.required, Validators.minLength(9)]]
+      accountNumber: ['',[Validators.required, Validators.minLength(9)]]
     })
+    this.cuentaActiva = this.cuentaService.cuentaUsuarioActivo[0];
    }
 
   ngDoCheck(): void {
+    
     this.usuario = this.usuarioService.usuarioLogeado
+  
   }
 
   ngOnInit(): void {
-    this.cuentaActiva = this.cuentaService.cuentaUsuarioActivo[0]
+    
   }
 
   depositar():void{
@@ -95,17 +98,31 @@ export class HomeComponent implements OnInit, DoCheck{
    }
 
    createAccount(){
+    if(this.cuentasDeUsuario.length > 1){
+      alert("You Cannot create another account")
+    }
+    else{
+    let numeroDeCuentaNuevo = parseInt(9+this.createForm.get('dni')?.value)+1;
+    
     let nuevaCuenta:Cuenta = {
       id: 0,
       idCliente: this.usuario.idCliente,
-      numeroDeCuenta: parseInt(9+this.createForm.get('dni')?.value) ,
+      numeroDeCuenta: numeroDeCuentaNuevo ,
       monto: 0,
       alias: this.createForm.get('alias')?.value,
       cbu: parseInt(9+this.createForm.get('dni')?.value),
       estado: false
+      }
+      this.cuentaService.createCuenta(nuevaCuenta).subscribe(()=>alert('Cuenta Creada con exito'))
     }
-    this.cuentaService.createCuenta(nuevaCuenta).subscribe(()=>alert('Cuenta Creada con exito'))
    }
 
+   getCuentas(){
+    this.cuentaService.getCuentabyId(this.usuario).subscribe((data)=>this.cuentasDeUsuario = data);
+   }
+
+   changeAccount(){
+      this.cuentaService.getCuenta(parseInt(this.changeForm.get('accountNumber')?.value)).subscribe((data)=> this.cuentaActiva =data);
+   }
 
 }
