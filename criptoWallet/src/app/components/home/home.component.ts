@@ -20,12 +20,13 @@ export class HomeComponent implements OnInit {
 
   constructor(private fb:FormBuilder, private cuentaService:CuentaService) {
     this.depositForm = this.fb.group({
-      monto:['',[Validators.required, Validators.min(1)]],
-      cuenta:['',[Validators.required, Validators.minLength(9)]]
+      montoDeposito:['',[Validators.required, Validators.min(1)]],
+      cuentaDeposito:['',[Validators.required, Validators.minLength(9)]]
     })
     this.sendForm = this.fb.group({
-      monto:['',[Validators.required, Validators.min(1)]],
-      cuenta:['',[Validators.required, Validators.minLength(9)]]
+      montoEnvio:['',[Validators.required, Validators.min(1)]],
+      cuentaEnvio:['',[Validators.required, Validators.minLength(9)]],
+      cuentaReceptor:['',[Validators.required, Validators.minLength(9)]]
     })
    }
 
@@ -35,16 +36,16 @@ export class HomeComponent implements OnInit {
   }
 
   depositar():void{
-    if (this.cuentaActiva.numeroDeCuenta == parseInt(this.depositForm.get('cuenta')?.value)){
+    if (this.cuentaActiva.numeroDeCuenta == parseInt(this.depositForm.get('cuentaDeposito')?.value)){
       
-      this.cuentaActiva.monto+=this.depositForm.get('monto')?.value;
+      this.cuentaActiva.monto+=this.depositForm.get('montoDeposito')?.value;
       document.getElementById('depositClose')?.click();
       let cuentaUpdate:Cuenta = {
         alias:this.cuentaActiva.alias,
         cbu:this.cuentaActiva.cbu,
         estado:this.cuentaActiva.estado,
         id:this.cuentaActiva.idCuenta,
-        id_cliente:this.cuentaActiva.idCliente,
+        idCliente:this.cuentaActiva.idCliente,
         monto:this.cuentaActiva.monto,
         numeroDeCuenta:this.cuentaActiva.numeroDeCuenta
       }
@@ -57,14 +58,25 @@ export class HomeComponent implements OnInit {
   }
 
   enviarDinero():void{
-  //   if (this.cuenta.numero_de_cuenta == this.sendForm.get('cuenta')?.value){
-  //     this.cuenta.monto-=this.sendForm.get('monto')?.value
-  //  document.getElementById('sendClose')?.click();
-
-  //  }
-  //  else {
-  //    alert("La cuenta ingresada es incorrecta!")
-  //  }
+    if (this.cuentaActiva.numeroDeCuenta == parseInt(this.sendForm.get('cuentaEnvio')?.value)){
+      
+      this.cuentaActiva.monto-=this.sendForm.get('montoEnvio')?.value;
+      document.getElementById('sendClose')?.click();
+      let cuentaUpdate:Cuenta = {
+        alias:this.cuentaActiva.alias,
+        cbu:this.cuentaActiva.cbu,
+        estado:this.cuentaActiva.estado,
+        id:this.cuentaActiva.idCuenta,
+        idCliente:this.cuentaActiva.idCliente,
+        monto:this.cuentaActiva.monto,
+        numeroDeCuenta:this.cuentaActiva.numeroDeCuenta
+      }
+      console.log(cuentaUpdate);
+      this.cuentaService.updateCuenta(cuentaUpdate).subscribe(()=>alert("Transfer made saccessfully!"));
+    }
+    else {
+      alert("La cuenta ingresada es incorrecta!")
+    }
    }
 
 }
