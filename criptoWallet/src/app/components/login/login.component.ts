@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Auth/auth.service';
+import { LoggedUser } from 'src/app/Models/ILoggedUser.model';
 import { Usuario } from 'src/app/Models/IUsuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
   token!:any;
   listaUsuarios:Usuario[]=[]
-  usuarioLogeado?:Usuario
+  usuarioLogeado!:Usuario
 
   constructor(private fb:FormBuilder, private authService:AuthService, private route:Router, private usuarioService:UsuarioService) {
     this.loginForm = this.fb.group({
@@ -29,23 +30,20 @@ export class LoginComponent implements OnInit {
 
 
   login():void{
-    this.usuarioLogeado = this.listaUsuarios.find((usuario:Usuario) => usuario.email == this.loginForm.get('email')?.value)
-    console.log(this.usuarioLogeado)
-    // if (!usuarioLogeado){
-    //   alert("El mail ingresado no corresponde a un usuario activo")
-    // }
-    // else if(usuarioLogeado?.password == this.loginForm.value.password){
-    //   this.token = usuarioLogeado?.email
-    //   this.usuarioService.usuarioLogeado=usuarioLogeado;
-    //   sessionStorage.setItem('token', JSON.stringify(this.token));
-    //   this.route.navigate(['/home']);       
-    //   this.loginForm.reset()
-    // }
-    // else{
-    //   alert("La contraseña ingresada es incorrecta")
-    // }
+    let loggedUser:LoggedUser = {
+      email:this.loginForm.get('email')?.value,
+      password:this.loginForm.get('password')?.value
+    }
+    this.usuarioService.getUsuariobyEmail(loggedUser).subscribe((data) =>{
+      if(data){
+        this.usuarioLogeado = data;
+        this.token = this.usuarioLogeado.nombre+"."+this.usuarioLogeado.apellido
+        sessionStorage.setItem('token', JSON.stringify(this.token))
+        this.route.navigate(['/home']);
+      }
+      else{
+        alert("Invalid email or password");
+      }
+    })
   }
-
-  
-
 }
