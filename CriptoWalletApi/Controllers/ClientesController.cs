@@ -76,11 +76,14 @@ namespace CriptoWalletApi.Controllers
                 if (clientSelect != null)
                 {
                     var cuentas = context.CuentasBancarias.FirstOrDefault(cu => cu.IdCliente == clientSelect.IdCliente);
-                    var transacciones = context.Transacciones.FirstOrDefault(tr => tr.IdCuenta == cuentas.IdCuenta);
-                    cuentas.Transacciones.Add(transacciones);
-                    clientSelect.CuentasBancaria.Add(cuentas);
-              
-                   
+                    if (cuentas != null)
+                    {
+                        var transacciones = context.Transacciones.FirstOrDefault(tr => tr.IdCuenta == cuentas.IdCuenta);
+                        cuentas.Transacciones.Add(transacciones); 
+                        clientSelect.CuentasBancaria.Add(cuentas);  
+                        return clientSelect;
+                    }
+
                 }
             return clientSelect;
             }
