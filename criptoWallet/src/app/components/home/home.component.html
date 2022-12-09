@@ -135,13 +135,16 @@
         <form [formGroup]="createForm" (ngSubmit)="createAccount()" class="col-7 d-flex flex-column gap-5">
           <div class="col-md-12">
             <label for="dni" class="form-label" >DNI:</label>
-            <input type="number" class="form-control" id="dni" formControlName="dni">
+            <input type="text" class="form-control" id="dni" formControlName="dni">
             <div *ngIf="createForm.get('dni')?.invalid && (createForm.get('dni')?.dirty || createForm.get('dni')?.touched)" class="alerta">
               <div *ngIf="createForm.get('dni')?.errors?.['required']">
                 DNI is required.
               </div>
               <div *ngIf="createForm.get('dni')?.errors?.['minlength']">
                 DNI must have at least 8 characters.
+              </div>
+              <div *ngIf="createForm.get('dni')?.errors?.['maxlength']">
+                DNI must have less than 9 characters.
               </div>
             </div>
           </div>

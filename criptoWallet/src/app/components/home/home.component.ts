@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit, DoCheck{
     });
 
     this.createForm = this.fb.group({
-      dni:['',[Validators.required, Validators.minLength(8)]],
+      dni:['',[Validators.required, Validators.minLength(8), Validators.maxLength(9)]],
       alias:['',[Validators.required, Validators.minLength(5)]]
     });
 

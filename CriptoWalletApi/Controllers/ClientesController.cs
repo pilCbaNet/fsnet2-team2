@@ -61,6 +61,7 @@ namespace CriptoWalletApi.Controllers
                     
                 });                
                 context.SaveChanges();
+
             }
         }
 
@@ -83,7 +84,25 @@ namespace CriptoWalletApi.Controllers
                         clientSelect.CuentasBancaria.Add(cuentas);  
                         return clientSelect;
                     }
-
+                    if(cuentas == null)
+                    {
+                        var rd = new Random();
+                        cuentas = new CuentasBancaria()
+                        {
+                            Alias = clientSelect.Nombre + "." + clientSelect.Apellido,
+                            Cbu = 0,
+                            IdCliente = clientSelect.IdCliente,
+                            Estado = clientSelect.Estado,
+                            IdCuenta = 0,
+                            Monto = 0,
+                            Transacciones = new Transaccione[0],
+                            NumeroDeCuenta = rd.Next(100000000, 999999999)
+                            
+                        };
+                        
+                        clientSelect.CuentasBancaria.Add(cuentas);
+                        context.SaveChanges();
+                    }
                 }
             return clientSelect;
             }
