@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 
-namespace CriptoWalletApi.Models
+namespace CriptoWalletApi.DTO
 {
-    public partial class Transaccione
+    public class TransaccionDTO
     {
         public int IdTransaccion { get; set; }
         public DateTime FechaHoraTransaccion { get; set; }
@@ -12,8 +11,5 @@ namespace CriptoWalletApi.Models
         public int CuentaOrigen { get; set; }
         public int IdCuenta { get; set; }
         public int IdTipoMovimientos { get; set; }
-
-        public virtual CuentasBancaria IdCuentaNavigation { get; set; } = null!;
-        public virtual TiposMovimiento IdTipoMovimientosNavigation { get; set; } = null!;
     }
 }
