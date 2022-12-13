@@ -9,11 +9,17 @@ namespace CriptoWalletApi.Controllers
     [ApiController]
     public class TransaccionesController : ControllerBase
     {
-        // GET: api/<TransaccionesController>
+            // GET: api/<TransaccionesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Transaccione> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<Transaccione> listaTransaccione;
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                listaTransaccione = context.Transacciones.ToList();
+            }
+
+            return listaTransaccione;
         }
 
         // GET api/<TransaccionesController>/5
