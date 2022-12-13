@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Cuenta } from '../Models/ICuenta.mode.';
 import { CuentaActiva } from '../Models/ICuentaActivs.model';
 import { Usuario } from '../Models/IUsuario.model';
+import { Transacciones } from '../Models/Transacciones.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +31,8 @@ export class CuentaService {
     return this.http.get<CuentaActiva>("https://localhost:7155/api/Cuentas/"+id);
   }
 
-  updateCuenta(cuenta:Cuenta):Observable<Cuenta>{
-    return this.http.put<Cuenta>("https://localhost:7155/api/Cuentas/"+cuenta.numeroDeCuenta, cuenta)
+  updateCuenta(cuenta:Transacciones):Observable<Transacciones>{
+    return this.http.put<Transacciones>("https://localhost:7155/api/Cuentas/"+cuenta.numeroDeCuenta, cuenta)
   }
 
   deleteCuenta(cuenta:Cuenta):Observable<Cuenta>{

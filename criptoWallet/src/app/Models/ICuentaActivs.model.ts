@@ -1,4 +1,4 @@
-import { Transacciones } from "./Transacciones.model";
+import { Movimientos } from "./IMovimientos";
 
 export interface CuentaActiva{
     idCuenta: number;
@@ -8,5 +8,5 @@ export interface CuentaActiva{
     alias:string;
     cbu:number;
     estado:boolean;
-    transacciones:Transacciones[];
+    transacciones:Movimientos[];
 }

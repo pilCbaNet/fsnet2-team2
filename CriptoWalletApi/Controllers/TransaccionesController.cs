@@ -1,4 +1,5 @@
-﻿using CriptoWalletApi.Models;
+﻿using CriptoWalletApi.DTO;
+using CriptoWalletApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -46,8 +47,22 @@ namespace CriptoWalletApi.Controllers
 
         // POST api/<TransaccionesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] TransaccionDTO tr)
         {
+            using(var context = new BD_CRIPTOWALLETContext())
+            {
+                context.Transacciones.Add(new Transaccione
+                {
+                    CuentaDestino= tr.CuentaDestino,
+                    CuentaOrigen= tr.CuentaOrigen,
+                    FechaHoraTransaccion= DateTime.Now,
+                    IdCuenta= tr.IdCuenta,
+                    IdTipoMovimientos = tr.IdTipoMovimientos,
+                    Monto = tr.Monto,
+
+                });
+                context.SaveChanges();
+            }
         }
 
         // PUT api/<TransaccionesController>/5

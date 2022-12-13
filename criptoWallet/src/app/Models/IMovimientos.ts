@@ -1,8 +1,7 @@
 export interface Movimientos{
-    fechaHoraTransaccion: Date;
     monto:number;
-    cuentaDestino:number;
-    cuentaOrigen:number;
+    cuentaDestino:string;
+    cuentaOrigen:string;
     idCuenta:number;
     idTipoMovimientos:number;
 }

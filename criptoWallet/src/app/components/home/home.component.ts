@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cuenta } from 'src/app/Models/ICuenta.mode.';
 import { CuentaActiva } from 'src/app/Models/ICuentaActivs.model';
 import { Usuario } from 'src/app/Models/IUsuario.model';
+import { Transacciones } from 'src/app/Models/Transacciones.model';
 import { CuentaService } from 'src/app/services/cuenta.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -61,15 +62,22 @@ export class HomeComponent implements OnInit, DoCheck{
       
       this.cuentaActiva.monto+=this.depositForm.get('montoDeposito')?.value;
       document.getElementById('depositClose')?.click();
-      let cuentaUpdate:Cuenta = {
+      let cuentaUpdate:Transacciones = {
         alias:this.cuentaActiva.alias,
         cbu:this.cuentaActiva.cbu,
         estado:this.cuentaActiva.estado,
-        id:this.cuentaActiva.idCuenta,
+        idCuenta:this.cuentaActiva.idCuenta,
         idCliente:this.cuentaActiva.idCliente,
         monto:this.cuentaActiva.monto,
-        numeroDeCuenta:this.cuentaActiva.numeroDeCuenta
-      }
+        numeroDeCuenta:this.cuentaActiva.numeroDeCuenta,
+        transaccion:{
+        monto: this.cuentaActiva.monto,
+        cuentaDestino: "",
+        cuentaOrigen: this.cuentaActiva.numeroDeCuenta.toString(),
+        idCuenta: this.cuentaActiva.idCuenta,
+        idTipoMovimientos: 2,
+        }
+      };
       this.cuentaService.updateCuenta(cuentaUpdate).subscribe(()=>alert("Deposit made saccessfully!"));
     }
     else {
@@ -83,17 +91,25 @@ export class HomeComponent implements OnInit, DoCheck{
         alert("No tienes suficiente dinero en tu cuenta");
       }
       else {
-        this.cuentaActiva.monto-=this.sendForm.get('montoEnvio')?.value;
+      this.cuentaActiva.monto-=this.sendForm.get('montoEnvio')?.value;
+      let cuentaReceptor = this.sendForm.get('cuentaReceptor')?.value
       document.getElementById('sendClose')?.click();
-      let cuentaUpdate:Cuenta = {
+        let cuentaUpdate:Transacciones = {
         alias:this.cuentaActiva.alias,
         cbu:this.cuentaActiva.cbu,
         estado:this.cuentaActiva.estado,
-        id:this.cuentaActiva.idCuenta,
+        idCuenta:this.cuentaActiva.idCuenta,
         idCliente:this.cuentaActiva.idCliente,
         monto:this.cuentaActiva.monto,
-        numeroDeCuenta:this.cuentaActiva.numeroDeCuenta
-      }
+        numeroDeCuenta:this.cuentaActiva.numeroDeCuenta,
+        transaccion:{
+        monto: this.cuentaActiva.monto,
+        cuentaDestino: cuentaReceptor,
+        cuentaOrigen: this.cuentaActiva.numeroDeCuenta.toString(),
+        idCuenta: this.cuentaActiva.idCuenta,
+        idTipoMovimientos: 2,
+        }
+      };
       this.cuentaService.updateCuenta(cuentaUpdate).subscribe(()=>alert("Transfer made saccessfully!"));
       }
     }

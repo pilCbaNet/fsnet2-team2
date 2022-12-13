@@ -34,8 +34,15 @@ namespace CriptoWalletApi.Controllers
         {
             using (var context = new BD_CRIPTOWALLETContext())
             {
-                var cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
-                return cuentaBancariaSelect;
+                try
+                {
+                    var cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
+                    return cuentaBancariaSelect;
+                }
+                catch(Exception)
+                {
+                    throw;
+                }                
             }
 
         }
@@ -75,7 +82,7 @@ namespace CriptoWalletApi.Controllers
 
         // PUT api/<CuentasController>/5
         [HttpPut("{numero}")]
-        public void Put([FromBody] CuentaDTO nuevaCuenta)
+        public void Put([FromBody] CuentaTransaccionDTO nuevaCuenta)
         {
             using (var context = new BD_CRIPTOWALLETContext())
             {
@@ -84,9 +91,18 @@ namespace CriptoWalletApi.Controllers
                 if (cuenta != null)
                 {
                     cuenta.Monto = nuevaCuenta.Monto;
-                    context.SaveChanges();
-                }
-                
+                    
+                    context.Transacciones.Add(new Transaccione
+                        {
+                            CuentaDestino = nuevaCuenta.Transaccion.CuentaDestino,
+                            CuentaOrigen = nuevaCuenta.Transaccion.CuentaOrigen,
+                            FechaHoraTransaccion = DateTime.Now,
+                            IdCuenta = nuevaCuenta.Transaccion.IdCuenta,
+                            IdTipoMovimientos = nuevaCuenta.Transaccion.IdTipoMovimientos,
+                            Monto = nuevaCuenta.Transaccion.Monto
+                        });  
+                     context.SaveChanges();
+                 }                 
             }
         }
 

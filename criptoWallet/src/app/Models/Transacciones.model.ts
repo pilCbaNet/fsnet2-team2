@@ -1,8 +1,12 @@
+import { Movimientos } from "./IMovimientos";
+
 export interface Transacciones{
-fechaHoraTransaccion: Date;
-monto:number;
-cuentaDestino:number;
-cuentaOrigen:number;
-idCuenta:number;
-idTipoMovimientos:number;
+    idCuenta: number;
+    idCliente:number;
+    numeroDeCuenta: number;
+    monto: number;
+    alias:string;
+    cbu:number;
+    estado:boolean;
+    transaccion:Movimientos;
 }
