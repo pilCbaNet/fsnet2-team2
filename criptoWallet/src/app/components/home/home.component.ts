@@ -79,8 +79,11 @@ export class HomeComponent implements OnInit, DoCheck{
 
   enviarDinero():void{
     if (this.cuentaActiva.numeroDeCuenta == parseInt(this.sendForm.get('cuentaEnvio')?.value)){
-      
-      this.cuentaActiva.monto-=this.sendForm.get('montoEnvio')?.value;
+      if (this.cuentaActiva.monto <= this.sendForm.get('montoEnvio')?.value) {
+        alert("No tienes suficiente dinero en tu cuenta");
+      }
+      else {
+        this.cuentaActiva.monto-=this.sendForm.get('montoEnvio')?.value;
       document.getElementById('sendClose')?.click();
       let cuentaUpdate:Cuenta = {
         alias:this.cuentaActiva.alias,
@@ -92,6 +95,7 @@ export class HomeComponent implements OnInit, DoCheck{
         numeroDeCuenta:this.cuentaActiva.numeroDeCuenta
       }
       this.cuentaService.updateCuenta(cuentaUpdate).subscribe(()=>alert("Transfer made saccessfully!"));
+      }
     }
     else {
       alert("La cuenta ingresada es incorrecta!")
