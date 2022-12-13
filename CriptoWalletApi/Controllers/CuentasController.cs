@@ -1,4 +1,5 @@
 ﻿using CriptoWalletApi.Models;
+using CriptoWalletApi.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
