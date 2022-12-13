@@ -1,51 +1,130 @@
 <div class="login d-flex flex-column justify-content-start align-items-center">
   <div class="d-flex flex-column justify-content-center align-items-center">
-    <img src="../../../assets/verify-identity.png" class="imgLogo" alt="Registration page logo">
-    <h2 class="p-3">Home Page</h2>
+    <img
+      src="../../../assets/verify-identity.png"
+      class="imgLogo"
+      alt="Registration page logo"
+    />
+    <h1 class="p-3">Home Page</h1>
   </div>
 
-  <div class="card text-white bg-dark mb-4" style="max-width: 30rem;">
-    <div style="text-align:center;" class="card-header">Total Balance {{usuario}}</div>
+  <div class="card text-white bg-dark mb-4" style="max-width: 30rem">
+    <div style="text-align: center" class="card-header">
+      Total Balance {{ usuario }}
+    </div>
     <div class="card-body">
-      <h2 style="text-align:center;" class="card-title">{{cuenta.saldo | currency}}</h2>
-      <p style="text-align:center;" class="card-text">ARS</p>
-
+      <h2 style="text-align: center" class="card-title">
+        {{ cuenta.saldo | currency }}
+      </h2>
+      <p style="text-align: center" class="card-text">ARS</p>
     </div>
     <div class="card-header">
       <div class="d-flex gap-2">
-        <button style="margin:2px 2px 2px 2px ;" type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#depositar">Deposit</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#enviar">Send</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comprar">Buy/Sell</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cambiar">Change</button>
+        <button
+          style="margin: 2px 2px 2px 2px"
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#depositar"
+        >
+          Deposit
+        </button>
+        <button
+          style="margin: 2px 2px 2px 2px"
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#enviar"
+        >
+          Send
+        </button>
+        <button
+          style="margin: 2px 2px 2px 2px"
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#comprar"
+        >
+          Buy/Sell
+        </button>
+        <button
+          style="margin: 2px 2px 2px 2px"
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#cambiar"
+        >
+          Change
+        </button>
       </div>
     </div>
   </div>
-
 </div>
 
 <!-- Modal DEPOSITAR-->
-<div class="modal fade text-black" id="depositar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade text-black"
+  id="depositar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 " id="exampleModalLabel">Make a deposit</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Make a deposit</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
-        <form [formGroup]="depositForm" (ngSubmit)="depositar()" class="col-7 d-flex flex-column gap-5">
+      <div
+        class="modal-body text-bg-secondary d-flex justify-content-center align-items-center"
+      >
+        <form
+          [formGroup]="depositForm"
+          (ngSubmit)="depositar()"
+          class="col-7 d-flex flex-column gap-5"
+        >
           <div class="col-md-12">
-            <label for="monto" class="form-label" >How much?</label>
-            <input type="number" class="form-control" id="monto" formControlName="monto">
-            <div *ngIf="depositForm.get('monto')?.invalid && (depositForm.get('monto')?.dirty || depositForm.get('monto')?.touched)" class="alerta">
+            <label for="monto" class="form-label">How much?</label>
+            <input
+              type="number"
+              class="form-control"
+              id="monto"
+              formControlName="monto"
+            />
+            <div
+              *ngIf="
+                depositForm.get('monto')?.invalid &&
+                (depositForm.get('monto')?.dirty ||
+                  depositForm.get('monto')?.touched)
+              "
+              class="alerta"
+            >
               <div *ngIf="depositForm.get('monto')?.errors?.['required']">
                 Amout is required.
               </div>
             </div>
           </div>
           <div class="col-md-12">
-            <label for="cuenta" class="form-label"  >Account number:</label>
-            <input type="text" class="form-control" id="cuenta" formControlName="cuenta">
-            <div *ngIf="depositForm.get('cuenta')?.invalid && (depositForm.get('cuenta')?.dirty || depositForm.get('cuenta')?.touched)" class="alerta">
+            <label for="cuenta" class="form-label">Account number:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cuenta"
+              formControlName="cuenta"
+            />
+            <div
+              *ngIf="
+                depositForm.get('cuenta')?.invalid &&
+                (depositForm.get('cuenta')?.dirty ||
+                  depositForm.get('cuenta')?.touched)
+              "
+              class="alerta"
+            >
               <div *ngIf="depositForm.get('cuenta')?.errors?.['required']">
                 Account is required.
               </div>
@@ -55,41 +134,94 @@
             </div>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="depositForm.invalid"><a class="text-white">Deposit</a></button>
+            <button
+              type="submit"
+              class="btn btn-outline-primary text-white"
+              [disabled]="depositForm.invalid"
+            >
+              <a class="text-white">Deposit</a>
+            </button>
           </div>
-      </form>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" id="depositClose" data-bs-dismiss="modal" (click)="depositForm.reset()">Close</button>
-
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="depositClose"
+          data-bs-dismiss="modal"
+          (click)="depositForm.reset()"
+        >
+          Close
+        </button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Modal ENVIAR-->
-<div class="modal fade text-black" id="enviar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade text-black"
+  id="enviar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 " id="exampleModalLabel">Send Money</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Send Money</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
-        <form [formGroup]="sendForm" (ngSubmit)="enviarDinero()" class="col-7 d-flex flex-column gap-5">
+      <div
+        class="modal-body text-bg-secondary d-flex justify-content-center align-items-center"
+      >
+        <form
+          [formGroup]="sendForm"
+          (ngSubmit)="enviarDinero()"
+          class="col-7 d-flex flex-column gap-5"
+        >
           <div class="col-md-12">
-            <label for="monto" class="form-label" >How much?</label>
-            <input type="number" class="form-control" id="monto" formControlName="monto">
-            <div *ngIf="sendForm.get('monto')?.invalid && (sendForm.get('monto')?.dirty || sendForm.get('monto')?.touched)" class="alerta">
+            <label for="monto" class="form-label">How much?</label>
+            <input
+              type="number"
+              class="form-control"
+              id="monto"
+              formControlName="monto"
+            />
+            <div
+              *ngIf="
+                sendForm.get('monto')?.invalid &&
+                (sendForm.get('monto')?.dirty || sendForm.get('monto')?.touched)
+              "
+              class="alerta"
+            >
               <div *ngIf="sendForm.get('monto')?.errors?.['required']">
                 Amout is required.
               </div>
             </div>
           </div>
           <div class="col-md-12">
-            <label for="cuenta" class="form-label"  >Account number:</label>
-            <input type="text" class="form-control" id="cuenta" formControlName="cuenta">
-            <div *ngIf="sendForm.get('cuenta')?.invalid && (sendForm.get('cuenta')?.dirty || sendForm.get('cuenta')?.touched)" class="alerta">
+            <label for="cuenta" class="form-label">Account number:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cuenta"
+              formControlName="cuenta"
+            />
+            <div
+              *ngIf="
+                sendForm.get('cuenta')?.invalid &&
+                (sendForm.get('cuenta')?.dirty ||
+                  sendForm.get('cuenta')?.touched)
+              "
+              class="alerta"
+            >
               <div *ngIf="sendForm.get('cuenta')?.errors?.['required']">
                 Account is required.
               </div>
@@ -99,54 +231,95 @@
             </div>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="sendForm.invalid"><a class="text-white">Send Money</a></button>
+            <button
+              type="submit"
+              class="btn btn-outline-primary text-white"
+              [disabled]="sendForm.invalid"
+            >
+              <a class="text-white">Send Money</a>
+            </button>
           </div>
-      </form>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="sendForm.reset()" id="sendClose" >Close</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="sendForm.reset()"
+          id="sendClose"
+        >
+          Close
+        </button>
       </div>
     </div>
   </div>
 </div>
-
 
 <!-- Modal COMPRA/VENTA-->
-<div class="modal fade text-black" id="comprar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade text-black"
+  id="comprar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 " id="exampleModalLabel">Buy or Sell</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Buy or Sell</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
+      <div
+        class="modal-body text-bg-secondary d-flex justify-content-center align-items-center"
+      >
         IN CONTRUCTION
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-
 
 <!-- Modal CAMBIAR-->
-<div class="modal fade text-black" id="cambiar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade text-black"
+  id="cambiar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 " id="exampleModalLabel">Change</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Change</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
+      <div
+        class="modal-body text-bg-secondary d-flex justify-content-center align-items-center"
+      >
         IN CONTRUCTION
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-
