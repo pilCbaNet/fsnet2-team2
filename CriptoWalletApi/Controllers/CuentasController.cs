@@ -17,26 +17,26 @@ namespace CriptoWalletApi.Controllers
         [HttpGet]
         public IEnumerable<CuentasBancaria> Get()
         {
-            List<CuentasBancaria> listaCuentas; 
+            List<CuentasBancaria> listaCuentas;
             using (var context = new BD_CRIPTOWALLETContext())
             {
-                listaCuentas= context.CuentasBancarias.ToList();
+                listaCuentas = context.CuentasBancarias.ToList();
             }
 
             return listaCuentas;
         }
-       
+
 
         // GET api/<CuentasController>/5
         [Route("Id")]
         [HttpGet()]
         public CuentasBancaria Get(int id)
         {
-                using (var context = new BD_CRIPTOWALLETContext())
-                {
-                    var cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
-                    return cuentaBancariaSelect;
-                }
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                var cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
+                return cuentaBancariaSelect;
+            }
 
         }
 
@@ -110,5 +110,9 @@ namespace CriptoWalletApi.Controllers
                 }
 
             }
+
+
         }
+
+    }
 }
