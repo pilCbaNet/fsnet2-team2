@@ -18,6 +18,8 @@ namespace CriptoWalletApi.Models
         public int NumeroDeCuenta { get; set; }
         public bool Estado { get; set; }
 
+
+
         public virtual Cliente IdClienteNavigation { get; set; } = null!;
         public virtual ICollection<Transaccione> Transacciones { get; set; }
     }

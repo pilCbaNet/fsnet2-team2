@@ -1,9 +1,11 @@
 ﻿using CriptoWalletApi.DTO;
 using CriptoWalletApi.Models;
+using CriptoWalletApi.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace CriptoWalletApi.Controllers
 {
@@ -11,35 +13,39 @@ namespace CriptoWalletApi.Controllers
     [ApiController]
     public class CuentasController : ControllerBase
     {
+
         // GET: api/<CuentasController>
         [HttpGet]
         public IEnumerable<CuentasBancaria> Get()
         {
-            List<CuentasBancaria> listaCuentas; 
+            List<CuentasBancaria> listaCuentas;
             using (var context = new BD_CRIPTOWALLETContext())
             {
-                listaCuentas= context.CuentasBancarias.ToList();
+                listaCuentas = context.CuentasBancarias.ToList();
             }
 
             return listaCuentas;
         }
-       
 
 
         // GET api/<CuentasController>/5
-        [HttpGet("{id}")]
+        [Route("Id")]
+        [HttpGet()]
         public CuentasBancaria Get(int id)
         {
             using (var context = new BD_CRIPTOWALLETContext())
             {
-                var cuenta = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
-                return cuenta;
+                var cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
+                return cuentaBancariaSelect;
             }
+
         }
 
+
+        // POST api/<CuentasController>
         [Route("byClient")]
-        [HttpPost]
-        public IEnumerable<CuentasBancaria> GetbyClient([FromBody]ClienteDTO cliente)
+        [HttpPost()]
+        public IEnumerable<CuentasBancaria> GetbyClient([FromBody] ClienteDTO cliente)
         {
             using (var context = new BD_CRIPTOWALLETContext())
             {
@@ -57,10 +63,10 @@ namespace CriptoWalletApi.Controllers
                 context.CuentasBancarias.Add(new CuentasBancaria
                 {
                     IdCliente = cuentaDTO.IdCliente,
-                    Cbu=cuentaDTO.Cbu,
-                    Alias=cuentaDTO.Alias,
-                    Monto=cuentaDTO.Monto,
-                    NumeroDeCuenta=cuentaDTO.NumeroDeCuenta,
+                    Cbu = cuentaDTO.Cbu,
+                    Alias = cuentaDTO.Alias,
+                    Monto = cuentaDTO.Monto,
+                    NumeroDeCuenta = cuentaDTO.NumeroDeCuenta,
                     Estado = cuentaDTO.Estado
                 });
 
@@ -77,14 +83,11 @@ namespace CriptoWalletApi.Controllers
                 var cuenta = context.CuentasBancarias.FirstOrDefault(cb => cb.NumeroDeCuenta == nuevaCuenta.NumeroDeCuenta);
 
                 if (cuenta != null)
-                { 
+                {
                     cuenta.Monto = nuevaCuenta.Monto;
                     context.SaveChanges();
                 }
-                else
-                {
-
-                }
+                
             }
         }
 
@@ -99,12 +102,12 @@ namespace CriptoWalletApi.Controllers
                 {
                     cuenta.Estado = false;
                 }
-                else
-                {
+               
 
-                }
-                
             }
+
+
         }
+
     }
 }
