@@ -86,10 +86,7 @@ namespace CriptoWalletApi.Controllers
                     cuenta.Monto = nuevaCuenta.Monto;
                     context.SaveChanges();
                 }
-                else
-                {
-
-                }
+                
             }
         }
 
@@ -104,10 +101,7 @@ namespace CriptoWalletApi.Controllers
                 {
                     cuenta.Estado = false;
                 }
-                else
-                {
-
-                }
+               
 
             }
 
