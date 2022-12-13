@@ -1,95 +1,242 @@
 <div class="login d-flex flex-column justify-content-start align-items-center">
   <div class="d-flex flex-column justify-content-center align-items-center">
-    <img src="../../../assets/verify-identity.png" class="imgLogo" alt="Registration page logo">
+    <img
+      src="../../../assets/verify-identity.png"
+      class="imgLogo"
+      alt="Registration page logo"
+    />
     <h2 class="p-3">Home Page</h2>
   </div>
 
-  <div class="card text-white bg-dark mb-4" style="width: 30rem; height: 20rem;">
-    <div style="text-align:center;" class="card-header">Balance Total {{usuario.nombre}}</div>
-    <div class="card-body d-flex flex-column justify-content-center align-items-center">
-      <h2 style="text-align:center;" class="card-title">{{cuentaActiva.monto | currency}}</h2>
-      <p style="text-align:center;" class="card-text">ARS</p>
-
+  <div class="card text-white bg-dark mb-4" style="width: 30rem; height: 20rem">
+    <div style="text-align: center" class="card-header">
+      Balance Total {{ usuario.nombre }}
+    </div>
+    <div
+      class="card-body d-flex flex-column justify-content-center align-items-center"
+    >
+      <h2 style="text-align: center" class="card-title">
+        {{ cuentaActiva.monto | currency }}
+      </h2>
+      <p style="text-align: center" class="card-text">ARS</p>
     </div>
     <div class="card-header">
       <div class="d-flex justify-content-center align-items-center gap-2">
-        <button style="margin:2px 2px 2px 2px ;" type="button"  class="btn btn-outline-primary text-white" data-bs-toggle="modal" data-bs-target="#depositar">Deposit</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-primary text-white" data-bs-toggle="modal" data-bs-target="#enviar">Send</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-info text-white" data-bs-toggle="modal" data-bs-target="#comprar"(click)="getCuentas()">Create</button>
-        <button style="margin:2px 2px 2px 2px ;" type="button" class="btn btn-outline-info text-white" data-bs-toggle="modal" data-bs-target="#cambiar" (click)="getCuentas()">Select</button>
+        <button
+          style="margin: 2px 2px 2px 2px"
+          type="button"
+          class="btn btn-outline-primary text-white"
+          data-bs-toggle="modal"
+          data-bs-target="#depositar"
+        >
+          Deposit
+        </button>
+        <button
+          style="margin: 2px 2px 2px 2px"
+          type="button"
+          class="btn btn-outline-primary text-white"
+          data-bs-toggle="modal"
+          data-bs-target="#enviar"
+        >
+          Send
+        </button>
+        <button
+          style="margin: 2px 2px 2px 2px"
+          type="button"
+          class="btn btn-outline-info text-white"
+          data-bs-toggle="modal"
+          data-bs-target="#comprar"
+          (click)="getCuentas()"
+        >
+          Create
+        </button>
+        <button
+          style="margin: 2px 2px 2px 2px"
+          type="button"
+          class="btn btn-outline-info text-white"
+          data-bs-toggle="modal"
+          data-bs-target="#cambiar"
+          (click)="getCuentas()"
+        >
+          Select
+        </button>
       </div>
     </div>
   </div>
-
 </div>
 
 <!-- Modal DEPOSITAR-->
-<div class="modal fade text-black" id="depositar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade text-black"
+  id="depositar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 " id="exampleModalLabel">Make a deposit</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Make a deposit</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
-        <form [formGroup]="depositForm" (ngSubmit)="depositar()" class="col-7 d-flex flex-column gap-5">
+      <div
+        class="modal-body text-bg-secondary d-flex justify-content-center align-items-center"
+      >
+        <form
+          [formGroup]="depositForm"
+          (ngSubmit)="depositar()"
+          class="col-7 d-flex flex-column gap-5"
+        >
           <div class="col-md-12">
-            <label for="montoDeposito" class="form-label" >How much?</label>
-            <input type="number" class="form-control" id="montoDeposito" formControlName="montoDeposito">
-            <div *ngIf="depositForm.get('montoDeposito')?.invalid && (depositForm.get('montoDeposito')?.dirty || depositForm.get('montoDeposito')?.touched)" class="alerta">
-              <div *ngIf="depositForm.get('montoDeposito')?.errors?.['required']">
+            <label for="montoDeposito" class="form-label">How much?</label>
+            <input
+              type="number"
+              class="form-control"
+              id="montoDeposito"
+              formControlName="montoDeposito"
+            />
+            <div
+              *ngIf="
+                depositForm.get('montoDeposito')?.invalid &&
+                (depositForm.get('montoDeposito')?.dirty ||
+                  depositForm.get('montoDeposito')?.touched)
+              "
+              class="alerta"
+            >
+              <div
+                *ngIf="depositForm.get('montoDeposito')?.errors?.['required']"
+              >
                 Amout is required.
               </div>
             </div>
           </div>
           <div class="col-md-12">
-            <label for="cuentaDeposito" class="form-label"  >Account number:</label>
-            <input type="text" class="form-control" id="cuentaDeposito" formControlName="cuentaDeposito">
-            <div *ngIf="depositForm.get('cuentaDeposito')?.invalid && (depositForm.get('cuentaDeposito')?.dirty || depositForm.get('cuentaDeposito')?.touched)" class="alerta">
-              <div *ngIf="depositForm.get('cuentaDeposito')?.errors?.['required']">
+            <label for="cuentaDeposito" class="form-label"
+              >Account number:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="cuentaDeposito"
+              formControlName="cuentaDeposito"
+            />
+            <div
+              *ngIf="
+                depositForm.get('cuentaDeposito')?.invalid &&
+                (depositForm.get('cuentaDeposito')?.dirty ||
+                  depositForm.get('cuentaDeposito')?.touched)
+              "
+              class="alerta"
+            >
+              <div
+                *ngIf="depositForm.get('cuentaDeposito')?.errors?.['required']"
+              >
                 Account is required.
               </div>
-              <div *ngIf="depositForm.get('cuentaDeposito')?.errors?.['minlength']">
+              <div
+                *ngIf="depositForm.get('cuentaDeposito')?.errors?.['minlength']"
+              >
                 Account must have at least 9 characters.
               </div>
             </div>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="depositForm.invalid"><a class="text-white">Deposit</a></button>
+            <button
+              type="submit"
+              class="btn btn-outline-primary text-white"
+              [disabled]="depositForm.invalid"
+            >
+              <a class="text-white">Deposit</a>
+            </button>
           </div>
-      </form>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" id="depositClose" data-bs-dismiss="modal" (click)="depositForm.reset()">Close</button>
-
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="depositClose"
+          data-bs-dismiss="modal"
+          (click)="depositForm.reset()"
+        >
+          Close
+        </button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Modal ENVIAR-->
-<div class="modal fade text-black" id="enviar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade text-black"
+  id="enviar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 " id="exampleModalLabel">Send Money</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Send Money</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
-        <form [formGroup]="sendForm" (ngSubmit)="enviarDinero()" class="col-7 d-flex flex-column gap-5">
+      <div
+        class="modal-body text-bg-secondary d-flex justify-content-center align-items-center"
+      >
+        <form
+          [formGroup]="sendForm"
+          (ngSubmit)="enviarDinero()"
+          class="col-7 d-flex flex-column gap-5"
+        >
           <div class="col-md-12">
-            <label for="montoEnvio" class="form-label" >How much?</label>
-            <input type="number" class="form-control" id="montoEnvio" formControlName="montoEnvio">
-            <div *ngIf="sendForm.get('montoEnvio')?.invalid && (sendForm.get('montoEnvio')?.dirty || sendForm.get('montoEnvio')?.touched)" class="alerta">
+            <label for="montoEnvio" class="form-label">How much?</label>
+            <input
+              type="number"
+              class="form-control"
+              id="montoEnvio"
+              formControlName="montoEnvio"
+            />
+            <div
+              *ngIf="
+                sendForm.get('montoEnvio')?.invalid &&
+                (sendForm.get('montoEnvio')?.dirty ||
+                  sendForm.get('montoEnvio')?.touched)
+              "
+              class="alerta"
+            >
               <div *ngIf="sendForm.get('montoEnvio')?.errors?.['required']">
                 Amout is required.
               </div>
             </div>
           </div>
           <div class="col-md-12">
-            <label for="cuentaEnvio" class="form-label"  >From Account number:</label>
-            <input type="text" class="form-control" id="cuentaEnvio" formControlName="cuentaEnvio">
-            <div *ngIf="sendForm.get('cuentaEnvio')?.invalid && (sendForm.get('cuentaEnvio')?.dirty || sendForm.get('cuentaEnvio')?.touched)" class="alerta">
+            <label for="cuentaEnvio" class="form-label"
+              >From Account number:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="cuentaEnvio"
+              formControlName="cuentaEnvio"
+            />
+            <div
+              *ngIf="
+                sendForm.get('cuentaEnvio')?.invalid &&
+                (sendForm.get('cuentaEnvio')?.dirty ||
+                  sendForm.get('cuentaEnvio')?.touched)
+              "
+              class="alerta"
+            >
               <div *ngIf="sendForm.get('cuentaEnvio')?.errors?.['required']">
                 Account is required.
               </div>
@@ -99,44 +246,99 @@
             </div>
           </div>
           <div class="col-md-12">
-            <label for="cuentaReceptor" class="form-label"  >To account:</label>
-            <input type="text" class="form-control" id="cuentaReceptor" formControlName="cuentaReceptor">
-            <div *ngIf="sendForm.get('cuentaReceptor')?.invalid && (sendForm.get('cuentaReceptor')?.dirty || sendForm.get('cuentaReceptor')?.touched)" class="alerta">
+            <label for="cuentaReceptor" class="form-label">To account:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cuentaReceptor"
+              formControlName="cuentaReceptor"
+            />
+            <div
+              *ngIf="
+                sendForm.get('cuentaReceptor')?.invalid &&
+                (sendForm.get('cuentaReceptor')?.dirty ||
+                  sendForm.get('cuentaReceptor')?.touched)
+              "
+              class="alerta"
+            >
               <div *ngIf="sendForm.get('cuentaReceptor')?.errors?.['required']">
                 Account is required.
               </div>
-              <div *ngIf="sendForm.get('cuentaReceptor')?.errors?.['minlength']">
+              <div
+                *ngIf="sendForm.get('cuentaReceptor')?.errors?.['minlength']"
+              >
                 Account must have at least 9 characters.
               </div>
             </div>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="sendForm.invalid"><a class="text-white">Send Money</a></button>
+            <button
+              type="submit"
+              class="btn btn-outline-primary text-white"
+              [disabled]="sendForm.invalid"
+            >
+              <a class="text-white">Send Money</a>
+            </button>
           </div>
-      </form>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="sendForm.reset()" id="sendClose" >Close</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="sendForm.reset()"
+          id="sendClose"
+        >
+          Close
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-
 <!-- Modal CREAR CUENTA-->
-<div class="modal fade text-black" id="comprar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade text-black"
+  id="comprar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 " id="exampleModalLabel">Create Account</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Create Account</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
-        <form [formGroup]="createForm" (ngSubmit)="createAccount()" class="col-7 d-flex flex-column gap-5">
+      <div
+        class="modal-body text-bg-secondary d-flex justify-content-center align-items-center"
+      >
+        <form
+          [formGroup]="createForm"
+          (ngSubmit)="createAccount()"
+          class="col-7 d-flex flex-column gap-5"
+        >
           <div class="col-md-12">
-            <label for="dni" class="form-label" >DNI:</label>
-            <input type="text" class="form-control" id="dni" formControlName="dni">
-            <div *ngIf="createForm.get('dni')?.invalid && (createForm.get('dni')?.dirty || createForm.get('dni')?.touched)" class="alerta">
+            <label for="dni" class="form-label">DNI:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="dni"
+              formControlName="dni"
+            />
+            <div
+              *ngIf="
+                createForm.get('dni')?.invalid &&
+                (createForm.get('dni')?.dirty || createForm.get('dni')?.touched)
+              "
+              class="alerta"
+            >
               <div *ngIf="createForm.get('dni')?.errors?.['required']">
                 DNI is required.
               </div>
@@ -149,9 +351,21 @@
             </div>
           </div>
           <div class="col-md-12">
-            <label for="alias" class="form-label"  >Alias:</label>
-            <input type="text" class="form-control" id="cuentaDeposito" formControlName="alias">
-            <div *ngIf="createForm.get('alias')?.invalid && (createForm.get('alias')?.dirty || createForm.get('alias')?.touched)" class="alerta">
+            <label for="alias" class="form-label">Alias:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cuentaDeposito"
+              formControlName="alias"
+            />
+            <div
+              *ngIf="
+                createForm.get('alias')?.invalid &&
+                (createForm.get('alias')?.dirty ||
+                  createForm.get('alias')?.touched)
+              "
+              class="alerta"
+            >
               <div *ngIf="createForm.get('alias')?.errors?.['required']">
                 Alias is required.
               </div>
@@ -161,43 +375,88 @@
             </div>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-primary text-white" [disabled]="createForm.invalid"><a class="text-white">Create new account</a></button>
+            <button
+              type="submit"
+              class="btn btn-outline-primary text-white"
+              [disabled]="createForm.invalid"
+            >
+              <a class="text-white">Create new account</a>
+            </button>
           </div>
-      </form>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="sendForm.reset()" id="createClose" >Close</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="sendForm.reset()"
+          id="createClose"
+        >
+          Close
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-
 <!-- Modal CAMBIAR-->
-<div class="modal fade text-black" id="cambiar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade text-black"
+  id="cambiar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 " id="exampleModalLabel">Select Account</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Select Account</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="modal-body text-bg-secondary d-flex justify-content-center align-items-center">
-        <form [formGroup]="changeForm" (ngSubmit)="changeAccount()" class="col-7 d-flex flex-column gap-5">
+      <div
+        class="modal-body text-bg-secondary d-flex justify-content-center align-items-center"
+      >
+        <form
+          [formGroup]="changeForm"
+          (ngSubmit)="changeAccount()"
+          class="col-7 d-flex flex-column gap-5"
+        >
           <div class="col-md-12">
-            <label for="accountNumber" class="form-label">Select an Account</label>
-          <select class="form-control" id="accountNumber" placeholder="select one option" formControlName="accountNumber">
-            <option *ngFor="let cuenta of cuentasDeUsuario" [value]="cuenta.idCuenta" >{{cuenta.numeroDeCuenta}}</option>
-          </select>
+            <label for="accountNumber" class="form-label"
+              >Select an Account</label
+            >
+            <select
+              class="form-control"
+              id="accountNumber"
+              placeholder="select one option"
+              formControlName="accountNumber"
+            >
+              <option
+                *ngFor="let cuenta of cuentasDeUsuario"
+                [value]="cuenta.idCuenta"
+              >
+                {{ cuenta.numeroDeCuenta }}
+              </option>
+            </select>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-primary text-white"><a class="text-white">Select account</a></button>
+            <button type="submit" class="btn btn-outline-primary text-white">
+              <a class="text-white">Select account</a>
+            </button>
           </div>
-      </form>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
       </div>
     </div>
   </div>
 </div>
-
