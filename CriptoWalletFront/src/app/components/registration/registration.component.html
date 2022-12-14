@@ -72,6 +72,9 @@
             <div *ngIf="regForm.get('dni')?.errors?.['required']">
               This field is required.
             </div>
+            <div *ngIf="regForm.get('dni')?.errors?.['minlength']">
+              DNI must be at least 8 characters long.
+            </div>
           </div>
         </div>
         <div class="col-6">
