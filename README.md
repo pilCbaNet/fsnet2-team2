@@ -1,4 +1,4 @@
-## Documentación
+# Documentación
 
 Este repositorio contiene el código de la aplicación *CriptoWallet Grupo 2* y consta de dos partes, frontend y backend Desarrollado en Angular, C# y Entity framework.
 
@@ -50,3 +50,33 @@ Estos valores componen la cadena de conexión a la base de datos de SQL server u
  * `Password=`: Contraseña del usuario de aplicación.
  * `Database=`: Nombre de la base de datos.
  * `TrustServerCertificate=`: Obtiene o establece un valor que indica si se va a cifrar el canal, al mismo tiempo que se omite recorrer la cadena de certificados para validar la confianza
+ 
+ 
+# El equipo:
+
+CRUZ KAREN YANINA NOEL
+https://github.com/KarenYaninaN
+
+CARDOZO PABLO SEBASTIAN
+https://github.com/sebascardozo
+
+PAGUAGA DIEGO ANDRES
+https://github.com/andrespaguaga
+
+MARCO IANNUZZI
+https://github.com/Marcoiannuzzi
+
+OZAMIS CÉSAR
+https://github.com/Cesarozamis
+
+JAVIER TRACHTA ---> Scrum Master <---
+https://github.com/mjtrachta
+
+GABRIEL DEHESA
+https://github.com/GabrielDehesa
+
+NICOLAS MACIAS
+https://github.com/NicoMacias
+
+COSTA, Leonardo
+https://github.com/LeonardoCostaH
