@@ -39,12 +39,12 @@ Transacciones
 
 Componentes de la base de datos:
 
-*Tipos_movimientos
-*Transaciones
-*Cuentas_bancarias
-*Clientes_
-*Localidades
-*Provincias
+* `Tipos_movimientos`
+* `Transaciones`
+* `Cuentas_bancarias`
+* `Clientes_`
+* `Localidades`
+* `Provincias`
 
 
 Estos valores componen la cadena de conexión a la base de datos de SQL server ubicado en BD_CRIPTOWALLETContext.cs en las lineas de codigo 29 a 32
