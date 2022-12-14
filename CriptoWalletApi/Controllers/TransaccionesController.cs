@@ -65,16 +65,44 @@ namespace CriptoWalletApi.Controllers
             }
         }
 
-        // PUT api/<TransaccionesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+
+        ///
+        [HttpPut]
+        public void Put([FromBody] TransaccionDTO cl)
         {
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                var transaccion = context.Transacciones.FirstOrDefault(cl => cl.IdTransaccion == cl.IdTransaccion);
+
+                transaccion.CuentaDestino = cl.CuentaDestino;
+                transaccion.CuentaOrigen = cl.CuentaOrigen;
+                transaccion.FechaHoraTransaccion = DateTime.Now ;
+                transaccion.IdCuenta = cl.IdCuenta;
+                transaccion.IdTipoMovimientos = cl.IdTipoMovimientos;
+                transaccion.Monto = cl.Monto;
+
+                context.SaveChanges();
+            }
         }
+
+
 
         // DELETE api/<TransaccionesController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                var transaccion = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCliente == id);
+                if (transaccion != null)
+                {
+                    transaccion.Estado = false;
+                }
+
+
+            }
+
+
         }
     }
 }
