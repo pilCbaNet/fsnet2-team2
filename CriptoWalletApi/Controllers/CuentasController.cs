@@ -8,13 +8,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CriptoWalletApi.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class CuentasController : ControllerBase
     {
 
         // GET: api/<CuentasController>
+        /// <summary>
+        /// Recupera una lista de cuentas bancarias registrados en la plataforma.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [Produces(typeof(List<Cliente>))]
         public IEnumerable<CuentasBancaria> Get()
         {
             List<CuentasBancaria> listaCuentas;
@@ -28,8 +34,14 @@ namespace CriptoWalletApi.Controllers
 
 
         // GET api/<CuentasController>/5
+        /// <summary>
+        /// Recupera una cuenta bancaria según el ID pasado por parámetro.
+        /// </summary>
+        /// <param name="id">ID de Cuenta Bancaria</param>
+        /// <returns></returns>
         [Route("Id")]
         [HttpGet()]
+        [Produces(typeof(CuentasBancaria))]
         public CuentasBancaria Get(int id)
         {
             using (var context = new BD_CRIPTOWALLETContext())
@@ -49,8 +61,14 @@ namespace CriptoWalletApi.Controllers
 
 
         // POST api/<CuentasController>
+        /// <summary>
+        /// Creación y registro de una cuenta bancaria en la plataforma.
+        /// </summary>
+        /// <param name="cliente">Cliente al que se le crea una cuenta bancaria</param>
+        /// <returns>Cuenta Bancaria</returns>
         [Route("byClient")]
         [HttpPost()]
+        [Produces(typeof(CuentasBancaria))]
         public IEnumerable<CuentasBancaria> GetbyClient([FromBody] ClienteDTO cliente)
         {
             using (var context = new BD_CRIPTOWALLETContext())
@@ -61,7 +79,12 @@ namespace CriptoWalletApi.Controllers
         }
 
         // POST api/<CuentasController>
+        /// <summary>
+        /// Creación de cuenta bancaria
+        /// </summary>
+        /// <param name="cuentaDTO"></param>
         [HttpPost]
+        [Produces(typeof(CuentaDTO))]
         public void Post([FromBody] CuentaDTO cuentaDTO)
         {
             using (var context = new BD_CRIPTOWALLETContext())
@@ -81,6 +104,10 @@ namespace CriptoWalletApi.Controllers
         }
 
         // PUT api/<CuentasController>/5
+        /// <summary>
+        /// Actualización de cuenta bancaria localizado por Número de Cuenta.
+        /// </summary>
+        /// <param name="nuevaCuenta">Nueva Cuenta Bancaria </param>
         [HttpPut("{numero}")]
         public void Put([FromBody] CuentaTransaccionDTO nuevaCuenta)
         {
@@ -107,6 +134,10 @@ namespace CriptoWalletApi.Controllers
         }
 
         // DELETE api/<CuentasController>/5
+        /// <summary>
+        /// Eliminación física de una cuenta localizado por ID.
+        /// </summary>
+        /// <param name="id">ID de Cuenta</param>
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

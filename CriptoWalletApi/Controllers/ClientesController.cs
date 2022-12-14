@@ -6,12 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CriptoWalletApi.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class ClientesController : ControllerBase
     {
         // GET: api/<ClientesController>
+        /// <summary>
+        /// Recupera una lista de clientes registrados en la plataforma.
+        /// </summary>
+        /// <returns>Lista de clientes</returns>
+
         [HttpGet]
+        [Produces(typeof(List<Cliente>))]
         public IEnumerable<Cliente> Get()
         {
             List<Cliente> listaClientes;
@@ -32,8 +39,15 @@ namespace CriptoWalletApi.Controllers
         }
 
         // GET api/<ClientesController>/5
+        /// <summary>
+        /// Recupera un cliente según el ID pasado por parámetro.
+        /// </summary>
+        /// <param name="id">ID de Cliente</param>
+        /// <returns>Cliente registrado en la plataforma</returns>
+
         [Route("GetById")]
         [HttpGet()]
+        [Produces(typeof(Cliente))]
         public Cliente Get(int id)
         {
             using (var context = new BD_CRIPTOWALLETContext())
@@ -44,6 +58,11 @@ namespace CriptoWalletApi.Controllers
         }
 
         // POST api/<ClientesController>
+        /// <summary>
+        /// Creación y registro de un cliente en la plataforma.
+        /// </summary>
+        /// <param name="cliente"> Cliente</param>
+
         [HttpPost]
         public void Post([FromBody] ClienteDTO cliente)
         {
@@ -66,8 +85,15 @@ namespace CriptoWalletApi.Controllers
         }
 
         // POST api/<ClientesController>
+        /// <summary>
+        /// Registro de un nuevo usuario, su logueo produce la creación de una cuenta.
+        /// </summary>
+        /// <param name="login">Usuario y Password del cliente</param>
+        /// <returns>Cliente registrado y creación de una cuenta</returns>
+
         [Route("Login")]
         [HttpPost]
+        [Produces(typeof(Cliente))]
         public Cliente Login([FromBody] LoginDTO login)
         {
             using (var context = new BD_CRIPTOWALLETContext())
@@ -111,7 +137,13 @@ namespace CriptoWalletApi.Controllers
         }
 
         // PUT api/<ClientesController>/5
+        /// <summary>
+        /// Actualización de los atributos de un cliente, localizado por ID.
+        /// </summary>
+        /// <param name="cliente">Cliente a actualizar</param>
+
         [HttpPut]
+        [Produces(typeof(Cliente))]
         public void Put([FromBody] ClienteDTO cliente)
         {
             using (var context = new BD_CRIPTOWALLETContext())
@@ -124,6 +156,11 @@ namespace CriptoWalletApi.Controllers
         }
 
         // DELETE api/<ClientesController>/5
+        /// <summary>
+        /// Eliminación física de un cliente localizado por ID.
+        /// </summary>
+        /// <param name="id">ID del Cliente</param>
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
