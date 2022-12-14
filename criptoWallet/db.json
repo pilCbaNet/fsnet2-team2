@@ -4,16 +4,11 @@
       "id": 1,
       "nombre": "Daniel",
       "apellido": "Herrera",
-      "email": "dherrera@gmail.com@live.com.ar",
+      "email": "dherrera@gmail.com",
       "password": "123456",
       "address": "Belgrano 3652",
       "city": "Cordoba",
-      "terms": true,
-      "usuarioRegistrado": {
-        "id": 1,
-        "email": "dherrera@gmail.com@live.com.ar",
-        "password": "123456"
-      }
+      "terms": true
     },
     {
       "nombre": "test",
@@ -23,18 +18,17 @@
       "address": "test",
       "city": "test",
       "terms": true,
-      "usuarioRegistrado": {
-        "email": "test@test.com",
-        "password": "test"
-      },
       "id": 2
     }
   ],
   "cuenta": [
     {
       "id": 1,
-      "numeroDeCuenta": "123456789",
-      "saldo": 150000
+      "usuarioId":2,
+      "numeroDeCuenta": 123456789,
+      "monto": 95000,
+      "alias": "usuarioTest",
+      "cbu": 123456789
     }
   ],
   "movimientos": [

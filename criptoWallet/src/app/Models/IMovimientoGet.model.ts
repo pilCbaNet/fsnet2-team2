@@ -1,4 +1,5 @@
-export interface Movimientos{
+export interface MovimientosGet{
+    fechaHoraTransaccion:Date;
     monto:number;
     cuentaDestino:string;
     cuentaOrigen:string;

@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.container-html {
+  background-image: url("src/assets/imagenes/home/3d-cryptocurrency-rendering-design.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}

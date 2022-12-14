@@ -1,4 +1,6 @@
-export interface Usuario{
+import { CuentaActiva } from "./ICuentaActivs.model";
+
+export interface UsuarioActivo{
     idCliente:number
     nombre: string;
     apellido: string;
@@ -7,4 +9,5 @@ export interface Usuario{
     domicilio: string;
     idLocalidad: number;
     estado: boolean;
+    cuentasBancaria:CuentaActiva[];
 }

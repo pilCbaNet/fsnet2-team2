@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CriptoWalletApi.DTO;
+using CriptoWalletApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace CriptoWalletApi.Controllers
 {
@@ -8,36 +12,117 @@ namespace CriptoWalletApi.Controllers
     [ApiController]
     public class CuentasController : ControllerBase
     {
+
         // GET: api/<CuentasController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<CuentasBancaria> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<CuentasBancaria> listaCuentas;
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                listaCuentas = context.CuentasBancarias.ToList();
+            }
+
+            return listaCuentas;
         }
 
+
         // GET api/<CuentasController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [Route("Id")]
+        [HttpGet()]
+        public CuentasBancaria Get(int id)
         {
-            return "value";
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                try
+                {
+                    var cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
+                    return cuentaBancariaSelect;
+                }
+                catch(Exception)
+                {
+                    throw;
+                }                
+            }
+
+        }
+
+
+        // POST api/<CuentasController>
+        [Route("byClient")]
+        [HttpPost()]
+        public IEnumerable<CuentasBancaria> GetbyClient([FromBody] ClienteDTO cliente)
+        {
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                var cuenta = context.CuentasBancarias.Where(cb => cb.IdCliente == cliente.IdCliente).ToList();
+                return cuenta;
+            }
         }
 
         // POST api/<CuentasController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] CuentaDTO cuentaDTO)
         {
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                context.CuentasBancarias.Add(new CuentasBancaria
+                {
+                    IdCliente = cuentaDTO.IdCliente,
+                    Cbu = cuentaDTO.Cbu,
+                    Alias = cuentaDTO.Alias,
+                    Monto = cuentaDTO.Monto,
+                    NumeroDeCuenta = cuentaDTO.NumeroDeCuenta,
+                    Estado = cuentaDTO.Estado
+                });
+
+                context.SaveChanges();
+            }
         }
 
         // PUT api/<CuentasController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{numero}")]
+        public void Put([FromBody] CuentaTransaccionDTO nuevaCuenta)
         {
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                var cuenta = context.CuentasBancarias.FirstOrDefault(cb => cb.NumeroDeCuenta == nuevaCuenta.NumeroDeCuenta);
+
+                if (cuenta != null)
+                {
+                    cuenta.Monto = nuevaCuenta.Monto;
+                    
+                    context.Transacciones.Add(new Transaccione
+                        {
+                            CuentaDestino = nuevaCuenta.Transaccion.CuentaDestino,
+                            CuentaOrigen = nuevaCuenta.Transaccion.CuentaOrigen,
+                            FechaHoraTransaccion = DateTime.Now,
+                            IdCuenta = nuevaCuenta.Transaccion.IdCuenta,
+                            IdTipoMovimientos = nuevaCuenta.Transaccion.IdTipoMovimientos,
+                            Monto = nuevaCuenta.Transaccion.Monto
+                        });  
+                     context.SaveChanges();
+                 }                 
+            }
         }
 
         // DELETE api/<CuentasController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            using (var context = new BD_CRIPTOWALLETContext())
+            {
+                var cuenta = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
+                if (cuenta != null)
+                {
+                    cuenta.Estado = false;
+                }
+               
+
+            }
+
+
         }
+
     }
 }

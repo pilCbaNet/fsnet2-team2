@@ -65,3 +65,13 @@ C:\Users\marco\Desktop\Marco\Proyecto Grupo B\fsnet2-team2\CriptoWalletApi\obj\D
 C:\Users\marco\Desktop\Marco\Proyecto Grupo B\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\CriptoWalletApi.pdb
 C:\Users\marco\Desktop\Marco\Proyecto Grupo B\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\CriptoWalletApi.genruntimeconfig.cache
 C:\Users\marco\Desktop\Marco\Proyecto Grupo B\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\ref\CriptoWalletApi.dll
+C:\Users\DELL\Source\Repos\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\CriptoWalletApi.csproj.AssemblyReference.cache
+C:\Users\DELL\Source\Repos\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\CriptoWalletApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Source\Repos\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\CriptoWalletApi.AssemblyInfoInputs.cache
+C:\Users\DELL\Source\Repos\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\CriptoWalletApi.AssemblyInfo.cs
+C:\Users\DELL\Source\Repos\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\CriptoWalletApi.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Source\Repos\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\CriptoWalletApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\DELL\Source\Repos\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\CriptoWalletApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\DELL\Source\Repos\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\CriptoWalletApi.dll
+C:\Users\DELL\Source\Repos\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\refint\CriptoWalletApi.dll
+C:\Users\DELL\Source\Repos\fsnet2-team2\CriptoWalletApi\obj\Debug\net6.0\CriptoWalletApi.pdb

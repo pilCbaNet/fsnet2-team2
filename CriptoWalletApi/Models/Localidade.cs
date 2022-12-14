@@ -7,7 +7,7 @@ namespace CriptoWalletApi.Models
     {
         public Localidade()
         {
-            Domicilios = new HashSet<Domicilio>();
+            Clientes = new HashSet<Cliente>();
         }
 
         public int IdLocalidad { get; set; }
@@ -16,6 +16,6 @@ namespace CriptoWalletApi.Models
         public int IdProvincia { get; set; }
 
         public virtual Provincia IdProvinciaNavigation { get; set; } = null!;
-        public virtual ICollection<Domicilio> Domicilios { get; set; }
+        public virtual ICollection<Cliente> Clientes { get; set; }
     }
 }
