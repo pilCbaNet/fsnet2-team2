@@ -33,27 +33,28 @@ namespace CriptoWalletApi.Controllers
         }
 
 
-        // POST api/<CuentasController>/5
+        // GET api/<CuentasController>/5
         /// <summary>
         /// Recupera una cuenta bancaria según el ID pasado por parámetro.
         /// </summary>
         /// <param name="id">ID de Cuenta Bancaria</param>
         /// <returns>Cuenta Bancaria</returns>
         [Route("Id")]
-        [HttpPost()]
-        public CuentasBancaria Post([FromBody] CuentaIdDTO cuentaId)
+        [HttpGet()]
+        [Produces(typeof(CuentasBancaria))]
+        public CuentasBancaria Get(int id)
         {
             using (var context = new BD_CRIPTOWALLETContext())
             {
                 try
                 {
-                    var cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == cuentaId.IdCuenta);
+                    var cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
                     return cuentaBancariaSelect;
                 }
-                catch (Exception)
+                catch(Exception)
                 {
                     throw;
-                }
+                }                
             }
 
         }
