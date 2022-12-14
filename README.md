@@ -9,8 +9,6 @@ Para poder levantar la aplicación será necesario contar con las herramientas d
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Front-end
 
-### Componentes 
-
 Login
 
 Home
