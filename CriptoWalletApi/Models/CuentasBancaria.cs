@@ -20,6 +20,9 @@ namespace CriptoWalletApi.Models
         /// Código entre 6 y 20 caracteres que admite letras, números, guión medio y punto para identificar una cuenta bancaria.
         /// </summary>
         public string Alias { get; set; } = null!;
+        /// <summary>
+        /// Saldo de la cuenta bancaria.
+        /// </summary>
         public long Monto { get; set; }
         /// <summary>
         /// El código de cuenta bancaria, consta de 20 dígitos.

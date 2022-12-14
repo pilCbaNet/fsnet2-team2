@@ -18,7 +18,7 @@ namespace CriptoWalletApi.Controllers
         /// <summary>
         /// Recupera una lista de cuentas bancarias registrados en la plataforma.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de cuentas bancarias</returns>
         [HttpGet]
         [Produces(typeof(List<Cliente>))]
         public IEnumerable<CuentasBancaria> Get()
@@ -38,7 +38,7 @@ namespace CriptoWalletApi.Controllers
         /// Recupera una cuenta bancaria según el ID pasado por parámetro.
         /// </summary>
         /// <param name="id">ID de Cuenta Bancaria</param>
-        /// <returns></returns>
+        /// <returns>Cuenta Bancaria</returns>
         [Route("Id")]
         [HttpGet()]
         [Produces(typeof(CuentasBancaria))]
@@ -82,7 +82,7 @@ namespace CriptoWalletApi.Controllers
         /// <summary>
         /// Creación de cuenta bancaria
         /// </summary>
-        /// <param name="cuentaDTO"></param>
+        /// <param name="cuentaDTO">Cuenta bancaria</param>
         [HttpPost]
         [Produces(typeof(CuentaDTO))]
         public void Post([FromBody] CuentaDTO cuentaDTO)
