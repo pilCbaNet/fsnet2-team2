@@ -7,9 +7,9 @@ Este repositorio contiene el código de la aplicación *CriptoWallet Grupo 2* y 
 Para poder levantar la aplicación será necesario contar con las herramientas de angular, node, json server, SQL Server y git instaladas.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### Front-end
+## Front-end
 
-## Componentes 
+### Componentes 
 
 Login
 
@@ -27,7 +27,7 @@ Create Acount
 
 Select Acount
 
-### Back-end
+## Back-end
 
 Clientes
 
@@ -35,7 +35,7 @@ Cuentas
 
 Transacciones
 
-### Base de Datos
+## Base de Datos
 
 Estos valores componen la cadena de conexión a la base de datos de SQL server ubicado en BD_CRIPTOWALLETContext.cs en las lineas de codigo 29 a 32
 
@@ -43,7 +43,7 @@ Estos valores componen la cadena de conexión a la base de datos de SQL server u
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS; Database=BD_CRIPTO-WALLET; User=sa; Password=123456; TrustServerCertificate=True");
             }
-# Donde:
+## Donde:
 
  * `Server=`: Nombre de dominio del servidor de base de datos.
  * `User=`: Nombre de usuario de aplicación.
