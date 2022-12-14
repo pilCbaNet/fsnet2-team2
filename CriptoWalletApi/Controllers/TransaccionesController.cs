@@ -6,11 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CriptoWalletApi.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class TransaccionesController : ControllerBase
     {
-            // GET: api/<TransaccionesController>
+        // GET: api/<TransaccionesController>
+        /// <summary>
+        /// Recupera una lista de transacciones registradas en la plataforma.
+        /// </summary>
+        /// <returns>Lista de transacciones realizadas</returns>
         [HttpGet]
         public IEnumerable<Transaccione> Get()
         {
@@ -24,6 +29,11 @@ namespace CriptoWalletApi.Controllers
         }
 
         // GET api/<TransaccionesController>/5
+        /// <summary>
+        /// Recupera una transacción según el ID pasado por parámetro.
+        /// </summary>
+        /// <param name="id">ID transacción</param>
+        /// <returns>Transacción</returns>
         [Route("Id")]
         [HttpGet]
         public Transaccione Get(int id)
@@ -46,6 +56,10 @@ namespace CriptoWalletApi.Controllers
        
 
         // POST api/<TransaccionesController>
+        /// <summary>
+        /// Creación de una transacción, para una cuenta específica.
+        /// </summary>
+        /// <param name="tr"></param>
         [HttpPost]
         public void Post([FromBody] TransaccionDTO tr)
         {
@@ -66,7 +80,11 @@ namespace CriptoWalletApi.Controllers
         }
 
 
-        ///
+        //PUT api/<TransaccionesController>/5
+        /// <summary>
+        ///  Actualización de los atributos de una transacción, localizada por ID.
+        /// </summary>
+        /// <param name="cl">Transacción con datos actualizados</param>
         [HttpPut]
         public void Put([FromBody] TransaccionDTO cl)
         {
@@ -88,6 +106,10 @@ namespace CriptoWalletApi.Controllers
 
 
         // DELETE api/<TransaccionesController>/5
+        /// <summary>
+        /// Eliminación física de una transacción localizada por ID.
+        /// </summary>
+        /// <param name="id">ID transacción</param>
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
