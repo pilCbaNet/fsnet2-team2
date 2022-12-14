@@ -2,6 +2,20 @@
 
 Este repositorio contiene el código de la aplicación *CriptoWallet Grupo 2* y consta de dos partes, frontend y backend Desarrollado en Angular, C# y Entity framework.
 
+## Objetivos:
+
+La empresa tecnológica del IPSC ha solicitado la creación de una aplicación web para la compra y venta de criptomonedas de una forma simple.
+
+Qué podés hacer:
+
+Depósitos y/o Retiros en Pesos
+Consulta del historial de operaciones 
+Mostrar cotizaciones vigentes
+Enviar Pesos y/o Criptomonedas
+Comprar y/o Vender Criptomonedas
+Intercambio de Criptomonedas
+
+
 ## Requerimientos
 
 Para poder levantar la aplicación será necesario contar con las herramientas de angular, node, json server, SQL Server y git instaladas.
