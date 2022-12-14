@@ -78,6 +78,10 @@ namespace CriptoWalletApi.Controllers
         }
 
         // POST api/<CuentasController>
+        /// <summary>
+        /// Crea una nueva cuenta y la guarda en la base de datos
+        /// </summary>
+        /// <param name="cuentaDTO"></param>
         [Route("Cuenta")]
         [HttpPost]
         [Produces(typeof(CuentaDTO))]
