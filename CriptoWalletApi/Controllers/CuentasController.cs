@@ -29,14 +29,14 @@ namespace CriptoWalletApi.Controllers
 
         // GET api/<CuentasController>/5
         [Route("Id")]
-        [HttpGet()]
-        public CuentasBancaria Get(int id)
+        [HttpPost()]
+        public CuentasBancaria Post([FromBody] CuentaIdDTO cuentaId)
         {
             using (var context = new BD_CRIPTOWALLETContext())
             {
                 try
                 {
-                    var cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == id);
+                    var cuentaBancariaSelect = context.CuentasBancarias.FirstOrDefault(cb => cb.IdCuenta == cuentaId.IdCuenta);
                     return cuentaBancariaSelect;
                 }
                 catch(Exception)
@@ -61,6 +61,7 @@ namespace CriptoWalletApi.Controllers
         }
 
         // POST api/<CuentasController>
+        [Route("Cuenta")]
         [HttpPost]
         public void Post([FromBody] CuentaDTO cuentaDTO)
         {

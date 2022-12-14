@@ -27,8 +27,8 @@ export class CuentaService {
     return this.http.post<CuentaActiva[]>("https://localhost:7155/api/Cuentas/byClient", usuario);
   }
 
-  getCuenta(id:number):Observable<CuentaActiva>{
-    return this.http.get<CuentaActiva>("https://localhost:7155/api/Cuentas/"+id);
+  getCuenta(id:any):Observable<CuentaActiva>{
+    return this.http.post<CuentaActiva>("https://localhost:7155/api/Cuentas/Id", id);
   }
 
   updateCuenta(cuenta:Transacciones):Observable<Transacciones>{

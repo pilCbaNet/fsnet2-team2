@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit, DoCheck{
       this.cuentaService.updateCuenta(cuentaUpdate).subscribe(()=>alert("Deposit made saccessfully!"));
     }
     else {
-      alert("La cuenta ingresada es incorrecta!")
+      alert("Incorrect account nunmber!")
     }
   }
 
@@ -110,11 +110,11 @@ export class HomeComponent implements OnInit, DoCheck{
         idTipoMovimientos: 3,
         }
       };
-      this.cuentaService.updateCuenta(cuentaUpdate).subscribe(()=>alert("Transfer made saccessfully!"));
+      this.cuentaService.updateCuenta(cuentaUpdate).subscribe(()=>alert("Transfer successful"));
       }
     }
     else {
-      alert("La cuenta ingresada es incorrecta!")
+      alert("Incorrect account nunmber!")
     }
    }
 
@@ -134,7 +134,7 @@ export class HomeComponent implements OnInit, DoCheck{
       cbu: parseInt(9+this.createForm.get('dni')?.value),
       estado: false
       }
-      this.cuentaService.createCuenta(nuevaCuenta).subscribe(()=>alert('Cuenta Creada con exito'))
+      this.cuentaService.createCuenta(nuevaCuenta).subscribe(()=>alert('Account created saccessfully!'))
     }
    }
 
@@ -143,7 +143,13 @@ export class HomeComponent implements OnInit, DoCheck{
    }
 
    changeAccount(){
-      this.cuentaService.getCuenta(parseInt(this.changeForm.get('accountNumber')?.value)).subscribe((data)=> this.cuentaActiva =data);
+      let num = {
+        idCuenta:parseInt(this.changeForm.get('accountNumber')?.value)
+      }
+      this.cuentaService.getCuenta(num).subscribe((data)=>{
+        this.cuentaActiva=data
+        alert("Account changed saccessfully!")
+      });
    }
 
 }
