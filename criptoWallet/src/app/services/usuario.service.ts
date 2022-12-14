@@ -15,8 +15,6 @@ export class UsuarioService {
   url:string = environment.url;
   usuarioLogeado!:Usuario;
 
-
-
   constructor(private http:HttpClient) { }
 
   crearUsuario(usuario:Usuario):Observable<any>{

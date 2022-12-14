@@ -72,8 +72,8 @@ export class HomeComponent implements OnInit, DoCheck{
         numeroDeCuenta:this.cuentaActiva.numeroDeCuenta,
         transaccion:{
         monto: this.cuentaActiva.monto,
-        cuentaDestino: "",
-        cuentaOrigen: this.cuentaActiva.numeroDeCuenta.toString(),
+        cuentaDestino: this.cuentaActiva.numeroDeCuenta.toString(),
+        cuentaOrigen: "Deposit in own account",
         idCuenta: this.cuentaActiva.idCuenta,
         idTipoMovimientos: 2,
         }
@@ -107,7 +107,7 @@ export class HomeComponent implements OnInit, DoCheck{
         cuentaDestino: cuentaReceptor,
         cuentaOrigen: this.cuentaActiva.numeroDeCuenta.toString(),
         idCuenta: this.cuentaActiva.idCuenta,
-        idTipoMovimientos: 2,
+        idTipoMovimientos: 3,
         }
       };
       this.cuentaService.updateCuenta(cuentaUpdate).subscribe(()=>alert("Transfer made saccessfully!"));
