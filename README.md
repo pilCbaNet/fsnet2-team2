@@ -8,12 +8,12 @@ La empresa tecnológica del IPSC ha solicitado la creación de una aplicación w
 
 Qué podés hacer:
 
-Depósitos y/o Retiros en Pesos
-Consulta del historial de operaciones 
-Mostrar cotizaciones vigentes
-Enviar Pesos y/o Criptomonedas
-Comprar y/o Vender Criptomonedas
-Intercambio de Criptomonedas
+* `Depósitos y/o Retiros en Pesos`
+* `Consulta del historial de operaciones`
+* `Mostrar cotizaciones vigentes`
+* `Enviar Pesos y/o Criptomonedas`
+* `Comprar y/o Vender Criptomonedas`
+* `Intercambio de Criptomonedas`
 
 
 ## Requerimientos
