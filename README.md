@@ -76,29 +76,29 @@ Estos valores componen la cadena de conexión a la base de datos de SQL server u
  
 # El equipo:
 
-CRUZ KAREN YANINA NOEL
+`CRUZ KAREN YANINA NOEL`
 https://github.com/KarenYaninaN
 
-CARDOZO PABLO SEBASTIAN
+`CARDOZO PABLO SEBASTIAN`
 https://github.com/sebascardozo
 
-PAGUAGA DIEGO ANDRES
+`PAGUAGA DIEGO ANDRES`
 https://github.com/andrespaguaga
 
-MARCO IANNUZZI
+`MARCO IANNUZZI`
 https://github.com/Marcoiannuzzi
 
-OZAMIS CÉSAR
+`OZAMIS CÉSAR`
 https://github.com/Cesarozamis
 
-JAVIER TRACHTA ---> Scrum Master <---
+`JAVIER TRACHTA` `---> Scrum Master <---`
 https://github.com/mjtrachta
 
-GABRIEL DEHESA
+`GABRIEL DEHESA`
 https://github.com/GabrielDehesa
 
-NICOLAS MACIAS
+`NICOLAS MACIAS`
 https://github.com/NicoMacias
 
-COSTA, Leonardo
+`COSTA, Leonardo`
 https://github.com/LeonardoCostaH
